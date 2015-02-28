@@ -109,7 +109,7 @@ function builderDraw() {
 
 function builderMouseDownEvent(e){
    if (state == BUILD) {
-      console.log(e);
+      //console.log(e);
       mouseX = e.offsetX;
       mouseY = e.offsetY;
       
@@ -189,16 +189,16 @@ function generateTile() {
             tiles.push(new Tile(testTileImage, GRID * 8, GRID * 1, [true, true, true, true], HULL));
             break;
          case 1:
-            tiles.push(new Tile(test1TileImage, GRID * 8, GRID * 1, [false, true, false, false], HULL));
+            tiles.push(new Tile(testTileImage, GRID * 8, GRID * 1, [true, true, true, true], HULL));
             break;
          case 2:
-            tiles.push(new Tile(test2TileImage, GRID * 8, GRID * 1, [false, true, false, true], HULL));
+            tiles.push(new Tile(testTileImage, GRID * 8, GRID * 1, [true, true, true, true], HULL));
             break;
          case 3:
-            tiles.push(new Tile(test3TileImage, GRID * 8, GRID * 1, [false, true, true, true], HULL));
+            tiles.push(new Tile(testGunTileImage, GRID * 8, GRID * 1, [false, false, true, false], GUN));
             break;
          case 4:
-            tiles.push(new Tile(testGunImage, GRID * 8, GRID * 1, [false, false, true, false], GUN));
+            tiles.push(new Tile(testGunTileImage, GRID * 8, GRID * 1, [false, false, true, false], GUN));
             break;
          default:
             break;

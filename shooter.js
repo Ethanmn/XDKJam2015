@@ -111,13 +111,13 @@ function move()
 
 function shoot()
 {
-   var ang = Math.atan2(mouseY - (BULLET_SIZE / 2) - ship.y, mouseX - (BULLET_SIZE / 2) - ship.x);
-   console.log(ang * (180/Math.PI));
-   var vx = Math.cos(ang) * BULLET_VEL;
-   var vy = Math.sin(ang) * BULLET_VEL;
-   
    for (var k = 0; k < ship.listWeaps.length; k++)
    {
-      bulletList.push(new Bullet(ship.listWeaps[k].x, ship.listWeaps[k].y, vx, vy));
+      var ang = Math.atan2(mouseY + (BULLET_SIZE / 2) - INTERNAL_GRID/2 - ship.listWeaps[k].y * INTERNAL_GRID - ship.y, mouseX + (BULLET_SIZE / 2) - INTERNAL_GRID/2 - ship.x - ship.listWeaps[k].x * INTERNAL_GRID);
+      console.log(ang * (180/Math.PI));
+      var vx = Math.cos(ang) * BULLET_VEL;
+      var vy = Math.sin(ang) * BULLET_VEL;
+      
+      bulletList.push(new Bullet(ship.x + ship.listWeaps[k].x * INTERNAL_GRID, ship.y + ship.listWeaps[k].y * INTERNAL_GRID, vx, vy));
    }
 }

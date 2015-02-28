@@ -1,5 +1,5 @@
 var BULLET_VEL = 10;
-var BULLET_SIZE = 10;
+var BULLET_SIZE = 7;
 
 var Bullet = function(px, py, vx, vy)
 {

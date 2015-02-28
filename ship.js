@@ -17,8 +17,9 @@ var Ship = function(tiles, cx, cy) {
          tiles[i].y = tiles[i].y / GRID - GRIDOFFY;
       }
       this.tiles = tiles;
+      
+      this.countComponents();
    }
-   this.init(tiles, cx, cy)
    
    this.countComponents = function() {
       this.listWeaps = [];
@@ -29,7 +30,7 @@ var Ship = function(tiles, cx, cy) {
       for (var i = 0; i < this.tiles.length; i++) {
          switch (this.tiles[i].type) {
             case(GUN) :
-               this.listWeaps(this.tiles[i]);
+               this.listWeaps.push(this.tiles[i]);
                break;
             
             case(ENGINE_DOWN) :
@@ -53,6 +54,7 @@ var Ship = function(tiles, cx, cy) {
          }
       }
    }
+   this.init(tiles, cx, cy);
    
    //x and y in this case are a relative x and y. 
    //Should be done with (whatever is hitting you).x - this.x, (whatever is hitting you).y - this.y
