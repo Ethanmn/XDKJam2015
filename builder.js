@@ -210,12 +210,12 @@ function checkNewShip() {
 }
 
 function exportShip() {
-   var ship = [];
+   var lship = [];
    for (var i = 0; i < tiles.length; i++) {
       if (!tiles[i].moveable) {
-         ship.push(tiles[i]);
+         lship.push(tiles[i]);
       }
    }
    //TESTON = false;
-   return new Ship(ship, 2, 4);
+   return new Ship(lship, 2, 4);
 }

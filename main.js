@@ -24,7 +24,7 @@ function loadGame()
 {
    ctx = document.getElementById("canvas").getContext('2d');
    
-   loadShooter();
+   //loadShooter();
    
    gameLoop();
 }
