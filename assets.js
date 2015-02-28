@@ -62,7 +62,9 @@ var trashImage3 = new Image();
 trashImage3.src = "assets/trashsmall3.png";
 
 var mainMenuImage = new Image();
-mainMenuImage.src = "assets/MenuScreen.png";
+mainMenuImage.src = "assets/MenuScreenMuted.png";
+var mainMenuImageMuted = new Image();
+mainMenuImageMuted.src = "assets/MenuScreen.png";
 
 var shopMenuImage = new Image();
 shopMenuImage.src = "assets/ShopMenu.png";

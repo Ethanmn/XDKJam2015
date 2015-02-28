@@ -199,15 +199,23 @@ function shipCollision()
    
    while (a--)
    {
-      if (asteroidList[a].posX > ship.posX - asteroidList[a].width &&
-          asteroidList[a].posX < ship.posX + SHIP_WIDTH * INTERNAL_GRID &&
-          asteroidList[a].posY > ship.posY - asteroidList[a].height &&
-          asteroidList[a].posY < ship.posY + SHIP_HEIGHT * INTERNAL_GRID)
+      if (asteroidList[a].posX > ship.x - asteroidList[a].width &&
+          asteroidList[a].posX < ship.x + SHIP_WIDTH * INTERNAL_GRID &&
+          asteroidList[a].posY > ship.y - asteroidList[a].height &&
+          asteroidList[a].posY < ship.y + SHIP_HEIGHT * INTERNAL_GRID)
       {
-         console.log("woof");
-         var isHit = ship.damage(asteroidList[a].posX - asteroidList[a].width/2 - ship.x,
-                     asteroidList[a].posY - asteroidList[a].height/2 - ship.y);
-         if (isHit)
+         console.log(ship);
+         var isHitT = ship.damage(asteroidList[a].posX + asteroidList[a].width/2 - ship.x,
+                     asteroidList[a].posY - ship.y);
+         var isHitB = ship.damage(asteroidList[a].posX + asteroidList[a].width/2 - ship.x,
+                     asteroidList[a].posY + asteroidList[a].height - ship.y);
+         var isHitL = ship.damage(asteroidList[a].posX - ship.x,
+                     asteroidList[a].posY + asteroidList[a].height/2 - ship.y);
+         var isHitR = ship.damage(asteroidList[a].posX + asteroidList[a].width - ship.x,
+                     asteroidList[a].posY + asteroidList[a].height/2 - ship.y);
+         
+         if (isHitT || isHitB ||
+             isHitL || isHitR)
          {
             asteroidList[a].health = 0;
          }
