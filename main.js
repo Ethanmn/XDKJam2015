@@ -10,6 +10,7 @@ function loadGame()
    addEventListener("mousedown", function(e){
       console.log(e);
    }, false);
+   loadShooter();
    gameLoop();
 }
 
