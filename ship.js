@@ -143,7 +143,7 @@ var Ship = function(tiles, cx, cy) {
       }
       ctx.fillStyle = '#ff0000';
       ctx.font = "16px Calibri";
-      ctx.fillText("Energy: " + Math.round(this.energy), 50, 50);
+      ctx.fillText("Energy: " + Math.floor(this.energy), 50, 50);
       ctx.stroke();
    }
    
