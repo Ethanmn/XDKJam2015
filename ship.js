@@ -24,9 +24,9 @@ var Ship = function(tiles, cx, cy) {
    
    this.countComponents = function() {
       this.listWeaps = [];
-      this.numReactors = 0;
-      this.leftThrust = 0;
-      this.rightThrust = 0;
+      this.numReactors = 1;
+      this.leftThrust = 1;
+      this.rightThrust = 1;
       this.speed = 0;
       for (var i = 0; i < this.tiles.length; i++) {
          switch (this.tiles[i].type) {
