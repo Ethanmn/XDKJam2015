@@ -1,5 +1,7 @@
 var delta = 20; // 50 FPS
 var ctx;
+var mouseDown = false;
+var mouseX, mouseY;
 
 var player = new Image(); 
 player.src = "tempPlayer.png";
@@ -9,7 +11,16 @@ function loadGame()
    ctx = document.getElementById("canvas").getContext('2d');
    addEventListener("mousedown", function(e){
       console.log(e);
-   }, false);
+      mouseDown = true;
+   });
+   addEventListener("mousemove", function(e){
+      if (mouseDown) {
+         console.log("mouse moved");
+      }
+   });
+   addEventListener("mouseup", function(e) {
+      mouseDown = false;
+   });
    loadShooter();
    gameLoop();
 }
