@@ -6,7 +6,7 @@ var bulletImage = new Image();
 bulletImage.src = "assets/bullet.png"
 
 var asteroidImage = new Image();
-asteroidImage.src = "assets/tempAsteroid.png"
+asteroidImage.src = "assets/Asteroid.png"
 
 var gun1 = new Image();
 gun1.src = "assets/gunEdge1.png";
