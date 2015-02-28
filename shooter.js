@@ -140,6 +140,9 @@ function setTarget()
 
 function shoot()
 {
+   if (ship.listWeaps.length > 0)
+      playSFX(LASER);
+   
    for (var k = 0; k < ship.listWeaps.length; k++)
    {
       if (ship.energy >= 5)

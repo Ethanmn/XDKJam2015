@@ -28,6 +28,8 @@ var newShipButtonY = GRID * 12;
 var newShipButtonW = 32;
 var newShipButtonH = 32;
 
+var burn = 0;
+
 var tiles = [];
 var startTile;
 
@@ -68,6 +70,10 @@ function builderUpdate(delta) {
       timerOn = false;
       state = STORE;
    }
+   if (burn > 0) {
+      console.log(burn);
+      burn--;
+   }
 }
 
 function builderDraw() {
@@ -93,7 +99,15 @@ function builderDraw() {
    ctx.fillText("Time Left: " + Math.floor(buildTimer/1000), 10, 50);
 
    ctx.drawImage(newShipButtonImage, newShipButtonX, newShipButtonY);
-   ctx.drawImage(trashImage, trashX, trashY);
+   if (burn < 5) {
+      ctx.drawImage(trashImage1, trashX, trashY);
+   }
+   else if (burn < 300) {
+      ctx.drawImage(trashImage2, trashX, trashY);
+   }
+   else {
+      ctx.drawImage(trashImage3, trashX, trashY);
+   }
    
    //DRAW ALL TILES
    for (var i = 0; i < tiles.length; i++) {
@@ -152,6 +166,8 @@ function builderMouseHoldEvent(e){
 }
 
 function builderMouseUpEvent(e) {
+   var isTrash = 0; // used to make sure that the METAL sfx doesn't play when you put something in the trash
+
    if (state == BUILD) {
       for (var i = 0; i < tiles.length; i++) {
          if (tiles[i].selected) {
@@ -160,15 +176,22 @@ function builderMouseUpEvent(e) {
             tiles[i].snap();
             if(tiles[i].x >= trashX && tiles[i].y >= trashY) {
                tiles.splice(i--, 1);
+               playSFX(TRASH);
+               burn += 200;
+               isTrash++;
+               
             }
             if(tiles[i].checkPlacementLegality()) {
                tiles[i].moveable = false;
                generateTile();
-               //console.log(tiles[i]);
+               
+               if(isTrash == 0)
+                  playSFX(METAL);
             }
             else {
                tiles[i].x = tiles[i].xPrev;
                tiles[i].y = tiles[i].yPrev;
+               playSFX(ERROR);
             }
          }
          tiles[i].selected = false;
@@ -181,24 +204,39 @@ function builderMouseUpEvent(e) {
 
 function generateTile() {
       //generate a tile here.
-      var OPTIONS = 5;
+      var OPTIONS = 10;
       var rand = Math.floor(Math.random() * OPTIONS);
       //[up, left, down, right]
       switch (rand) {
          case 0:
-            tiles.push(new Tile(testTileImage, GRID * 8, GRID * 1, [true, true, true, true], HULL));
+            tiles.push(new Tile(hull4, GRID * 8, GRID * 1, [true, true, true, true], HULL));
             break;
          case 1:
-            tiles.push(new Tile(testTileImage, GRID * 8, GRID * 1, [true, true, true, true], HULL));
+            tiles.push(new Tile(hull4, GRID * 8, GRID * 1, [true, true, true, true], HULL));
             break;
          case 2:
-            tiles.push(new Tile(testTileImage, GRID * 8, GRID * 1, [true, true, true, true], HULL));
+            tiles.push(new Tile(lHull1, GRID * 8, GRID * 1, [true, true, false, false], HULL));
             break;
          case 3:
-            tiles.push(new Tile(testGunTileImage, GRID * 8, GRID * 1, [false, false, true, false], GUN));
+            tiles.push(new Tile(lHull2, GRID * 8, GRID * 1, [false, true, true, false], HULL));
             break;
          case 4:
-            tiles.push(new Tile(testGunTileImage, GRID * 8, GRID * 1, [false, false, true, false], GUN));
+            tiles.push(new Tile(lHull3, GRID * 8, GRID * 1, [false, false, true, true], HULL));
+            break;
+         case 5:
+            tiles.push(new Tile(lHull4, GRID * 8, GRID * 1, [true, false, false, true], HULL));
+            break;
+         case 6:
+            tiles.push(new Tile(tHull1, GRID * 8, GRID * 1, [false, true, true, true], HULL));
+            break;
+         case 7:
+            tiles.push(new Tile(tHull2, GRID * 8, GRID * 1, [true, false, true, true], HULL));
+            break;
+         case 8:
+            tiles.push(new Tile(tHull3, GRID * 8, GRID * 1, [true, true, false, true], HULL));
+            break;
+         case 9:
+            tiles.push(new Tile(tHull4, GRID * 8, GRID * 1, [true, true, true, false], HULL));
             break;
          default:
             break;
