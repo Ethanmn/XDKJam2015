@@ -17,29 +17,6 @@ function loadGame()
 {
    ctx = document.getElementById("canvas").getContext('2d');
    
-   /*builder selecting listeners - now done in builder.js
-   addEventListener("mousedown", function(e){
-      console.log(e);
-      mouseX = e.offsetX;
-      mouseY = e.offsetY;
-      for (var i = 0; i < tiles.length; i++) {
-         if(tiles[i].checkCollide(mouseX, mouseY)) {
-            console.log("selected");
-         }
-      }
-      mouseDown = true;
-   });
-   addEventListener("mousemove", function(e){
-      if (mouseDown) {
-         mouseX = e.offsetX;
-         mouseY = e.offsetY;
-         console.log("mouse moved");
-      }
-   });
-   addEventListener("mouseup", function(e) {
-      mouseDown = false;
-   });
-   */
    loadShooter();
    
    gameLoop();
