@@ -28,6 +28,8 @@ var newShipButtonY = GRID * 12;
 var newShipButtonW = 32;
 var newShipButtonH = 32;
 
+var burn = 0;
+
 var tiles = [];
 var startTile;
 
@@ -68,6 +70,10 @@ function builderUpdate(delta) {
       timerOn = false;
       state = STORE;
    }
+   if (burn > 0) {
+      console.log(burn);
+      burn--;
+   }
 }
 
 function builderDraw() {
@@ -93,7 +99,15 @@ function builderDraw() {
    ctx.fillText("Time Left: " + Math.floor(buildTimer/1000), 10, 50);
 
    ctx.drawImage(newShipButtonImage, newShipButtonX, newShipButtonY);
-   ctx.drawImage(trashImage, trashX, trashY);
+   if (burn < 5) {
+      ctx.drawImage(trashImage1, trashX, trashY);
+   }
+   else if (burn < 300) {
+      ctx.drawImage(trashImage2, trashX, trashY);
+   }
+   else {
+      ctx.drawImage(trashImage3, trashX, trashY);
+   }
    
    //DRAW ALL TILES
    for (var i = 0; i < tiles.length; i++) {
@@ -152,7 +166,6 @@ function builderMouseHoldEvent(e){
 }
 
 function builderMouseUpEvent(e) {
-   var trash = 0;
 
    if (state == BUILD) {
       for (var i = 0; i < tiles.length; i++) {
@@ -163,14 +176,13 @@ function builderMouseUpEvent(e) {
             if(tiles[i].x >= trashX && tiles[i].y >= trashY) {
                tiles.splice(i--, 1);
                playSFX(TRASH);
-               ++trash;
+               burn += 200;
+               
             }
             if(tiles[i].checkPlacementLegality()) {
                tiles[i].moveable = false;
                generateTile();
-               //console.log(tiles[i]);
-               if (trash == 0)
-                  playSFX(METAL);
+               playSFX(METAL);
             }
             else {
                tiles[i].x = tiles[i].xPrev;

@@ -32,8 +32,12 @@ newTileButtonImage.src = "assets/tilebutton.png";
 var newShipButtonImage = new Image();
 newShipButtonImage.src = "assets/shipbutton.png";
 
-var trashImage = new Image();
-trashImage.src = "assets/trash.png";
+var trashImage1 = new Image();
+trashImage1.src = "assets/trashsmall1.png";
+var trashImage2 = new Image();
+trashImage2.src = "assets/trashsmall2.png";
+var trashImage3 = new Image();
+trashImage3.src = "assets/trashsmall3.png";
 
 var mainMenuImage = new Image();
 mainMenuImage.src = "assets/MenuScreen.png";
