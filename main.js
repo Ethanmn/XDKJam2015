@@ -24,7 +24,7 @@ function update(delta) {
 
 function draw()
 {
-	ctx.fillStyle = '#ff00ff';
+	ctx.fillStyle = '#000000';
 	ctx.fillRect(0,0, 500, 600);
    ctx.stroke();
    ctx.drawImage(bg_image, 50, 50);
