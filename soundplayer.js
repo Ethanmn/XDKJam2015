@@ -4,7 +4,16 @@ var sfxArray = [, laser, trash, error];
 var curSfx = 0, curBG = 1;
 var METAL = 0, LASER = 1, TRASH = 2, ERROR = 3;
 
+var muted = 1.0;
+
 var clangNum = 0;
+
+function muteBackGround () {
+	muted = (muted + 1)%2;
+	for (var i = bgArray.length - 1; i >= 0; i--) {
+		bgArray[i].volume = muted;
+	}
+}
 
 function switchBackground (bg) {
 	if (curBG != bg) {
