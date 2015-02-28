@@ -1,5 +1,6 @@
 var bgArray = [Hustle, RoboWestern, OutlawLand];
 var sfxArray = [, laser];
+var clangs = [new Audio("assets/sounds/clang1.wav"), new Audio("assets/sounds/clang2.wav"), new Audio("assets/sounds/clang3.wav")];
 
 var numSfx = 2;
 var curBG = 0;
