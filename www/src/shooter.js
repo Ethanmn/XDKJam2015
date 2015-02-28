@@ -24,7 +24,7 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-var MyLayer = cc.Layer.extend({
+var ShooterLayer = cc.Layer.extend({
     isMouseDown:false,
     helloImg:null,
     helloLabel:null,
@@ -68,11 +68,11 @@ var MyLayer = cc.Layer.extend({
         // 3. add your codes below...
         // add a label shows "Hello World"
         // create and initialize a label
-        this.helloLabel = cc.LabelTTF.create("Hello World", "Impact", 38);
+        //this.helloLabel = cc.LabelTTF.create("Hello World", "Impact", 38);
         // position the label on the center of the screen
-        this.helloLabel.setPosition(size.width / 2, size.height - 40);
+        //this.helloLabel.setPosition(size.width / 2, size.height - 40);
         // add the label as a child to this layer
-        this.addChild(this.helloLabel, 5);
+        //this.addChild(this.helloLabel, 5);
         
         // add player sprite
         this.player = cc.Sprite.create(s_tempPlayer);
@@ -83,13 +83,13 @@ var MyLayer = cc.Layer.extend({
     }
 });
 
-// Define MyScene as a subclass of cc.Scene
-var MyScene = cc.Scene.extend({
+// Define ShooterScene as a subclass of cc.Scene
+var ShooterScene = cc.Scene.extend({
     // on entering the scene, following code will be executed
     onEnter:function () {
         this._super();
         // create and add a layer to the scene
-        var layer = new MyLayer();
+        var layer = new ShooterLayer();
         this.addChild(layer);
         layer.init();
     }

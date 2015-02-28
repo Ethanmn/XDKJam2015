@@ -81,4 +81,5 @@ var cocos2dApp = cc.Application.extend({
 
 // Create an instance of Cocos2d game app.
 // See www/src/myApp.js for definition of MyScene.
-var myApp = new cocos2dApp(MyScene);
+var shooter = new cocos2dApp(ShooterScene);
+//var myApp = new cocos2dApp(MyScene);
