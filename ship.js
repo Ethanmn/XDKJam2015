@@ -10,7 +10,7 @@ var Ship = function(tiles, cx, cy) {
       this.cy = cy;
       this.energy = 0;
       this.numReactors = 0;
-      this.tiles = []; //converted tiles, don't call the older methods or else bad stuff happens.
+      this.tiles = []; //converted tiles, doon't call the older methods or else bad stuff happens.
       // this is totally not hacky. Totally.
       for (var i = 0; i < tiles.length; i++) {
          
@@ -135,10 +135,10 @@ var Ship = function(tiles, cx, cy) {
 
          ctx.drawImage(this.tiles[i].image, this.x + (this.tiles[i].x * INTERNAL_GRID), this.y + (this.tiles[i].y * INTERNAL_GRID), INTERNAL_GRID, INTERNAL_GRID);
          //commented out is debug text, showing the coordinates on the ship.
-         /*ctx.fillStyle = '#ff0000';
+         ctx.fillStyle = '#ff0000';
          ctx.font = "16px Calibri"
-         ctx.fillText(this.tiles[i].x + " " + this.tiles[i].y, this.x + (this.tiles[i].x * INTERNAL_GRID), this.y + 16 + (this.tiles[i].y * INTERNAL_GRID));
-         ctx.stroke();*/
+         ctx.fillText("Energy: " + this.energy, 50, 50);
+         ctx.stroke();
          //this.tiles[i].shipDraw(ctx, this.x, this.y);
       }
       ctx.fillStyle = '#ff0000';

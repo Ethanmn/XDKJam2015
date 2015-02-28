@@ -204,7 +204,7 @@ function builderMouseUpEvent(e) {
 
 function generateTile() {
       //generate a tile here.
-      var OPTIONS = 10;
+      var OPTIONS = 14;
       var rand = Math.floor(Math.random() * OPTIONS);
       //[up, left, down, right]
       switch (rand) {
@@ -237,6 +237,18 @@ function generateTile() {
             break;
          case 9:
             tiles.push(new Tile(tHull4, GRID * 8, GRID * 1, [true, true, true, false], HULL));
+            break;
+         case 10:
+            tiles.push(new Tile(gun1, GRID * 8, GRID * 1, [false, true, false, false], GUN));
+            break;
+         case 11:
+            tiles.push(new Tile(gun2, GRID * 8, GRID * 1, [false, false, true, false], GUN));
+            break;
+         case 12:
+            tiles.push(new Tile(gun3, GRID * 8, GRID * 1, [false, false, false, true], GUN));
+            break;
+         case 13:
+            tiles.push(new Tile(gunT, GRID * 8, GRID * 1, [false, true, false, true], GUN));
             break;
          default:
             break;
