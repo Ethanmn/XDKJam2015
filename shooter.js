@@ -111,6 +111,9 @@ function move()
 
 function shoot()
 {
+   if (ship.listWeaps.length > 0)
+      playSFX(LASER);
+   
    for (var k = 0; k < ship.listWeaps.length; k++)
    {
       var ang = Math.atan2(mouseY + (BULLET_SIZE / 2) - INTERNAL_GRID/2 - ship.listWeaps[k].y * INTERNAL_GRID - ship.y, mouseX + (BULLET_SIZE / 2) - INTERNAL_GRID/2 - ship.x - ship.listWeaps[k].x * INTERNAL_GRID);

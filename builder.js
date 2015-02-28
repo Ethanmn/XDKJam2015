@@ -152,6 +152,8 @@ function builderMouseHoldEvent(e){
 }
 
 function builderMouseUpEvent(e) {
+   var trash = 0;
+
    if (state == BUILD) {
       for (var i = 0; i < tiles.length; i++) {
          if (tiles[i].selected) {
@@ -160,15 +162,20 @@ function builderMouseUpEvent(e) {
             tiles[i].snap();
             if(tiles[i].x >= trashX && tiles[i].y >= trashY) {
                tiles.splice(i--, 1);
+               playSFX(TRASH);
+               ++trash;
             }
             if(tiles[i].checkPlacementLegality()) {
                tiles[i].moveable = false;
                generateTile();
                //console.log(tiles[i]);
+               if (trash == 0)
+                  playSFX(METAL);
             }
             else {
                tiles[i].x = tiles[i].xPrev;
                tiles[i].y = tiles[i].yPrev;
+               playSFX(ERROR);
             }
          }
          tiles[i].selected = false;
