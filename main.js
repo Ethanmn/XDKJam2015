@@ -22,5 +22,5 @@ function draw()
 {
 	ctx.fillStyle = '#ff00ff';
 	ctx.fillRect(0,0, 500, 600);
-   ctx.stroke();
+	ctx.stroke();
 }
