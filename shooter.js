@@ -18,8 +18,8 @@ function loadShooter()
    //ship = new Ship([new Tile(testTileImage, GRID * 5, GRID * 6, [true, true, true, true], COCKPIT),new Tile(testTileImage, GRID * 3, GRID * 2, [true, true, true, true], COCKPIT)], 2, 4);
    ship.x = STARTX;
    ship.y = STARTY;
-   ship.leftThrust = 1;
-   ship.rightThrust = 1;
+   ship.leftThrust = 10;
+   ship.rightThrust = 10;
    ship.numReactors = 1;
   
    shipMid = (SHIP_WIDTH * INTERNAL_GRID) / 2;
@@ -59,6 +59,7 @@ function updateShooter(delta)
    ship.update(delta);
    
    bulletCollision();
+   shipCollision();
 }
 
 function drawShooter()
@@ -187,6 +188,28 @@ function bulletCollision()
             bulletList.splice(k, 1);
             asteroidList[l].health--;
             break;
+         }
+      }
+   }
+}
+
+function shipCollision()
+{
+   var a = asteroidList.length;
+   
+   while (a--)
+   {
+      if (asteroidList[a].posX > ship.posX - asteroidList[a].width &&
+          asteroidList[a].posX < ship.posX + SHIP_WIDTH * INTERNAL_GRID &&
+          asteroidList[a].posY > ship.posY - asteroidList[a].height &&
+          asteroidList[a].posY < ship.posY + SHIP_HEIGHT * INTERNAL_GRID)
+      {
+         console.log("woof");
+         var isHit = ship.damage(asteroidList[a].posX - asteroidList[a].width/2 - ship.x,
+                     asteroidList[a].posY - asteroidList[a].height/2 - ship.y);
+         if (isHit)
+         {
+            asteroidList[a].health = 0;
          }
       }
    }
