@@ -1,5 +1,9 @@
 var delta = 20; // 50 FPS
 var ctx;
+
+var bg_image = new Image(); 
+bg_image.src = "tempPlayer.png";
+
 function loadGame()
 {
 	ctx = document.getElementById("canvas").getContext('2d');
@@ -23,4 +27,6 @@ function draw()
 	ctx.fillStyle = '#ff00ff';
 	ctx.fillRect(0,0, 500, 600);
    ctx.stroke();
+   ctx.drawImage(bg_image, 50, 50);
+
 }
