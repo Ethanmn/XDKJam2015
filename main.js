@@ -8,6 +8,9 @@ var ctx;
 var mouseDown = false;
 var mouseX, mouseY;
 
+var ship;
+
+
 // INITIALIZE ALL ASSETS IN ASSETS.JS!
 
 var state = MENU; //Ethan, edit this line to see your stuff drawn (change to state = SHOOT;)

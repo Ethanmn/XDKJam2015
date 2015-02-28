@@ -22,7 +22,7 @@ var Ship = function(tiles, cx, cy) {
    this.init(tiles, cx, cy)
    
    this.countComponents = function() {
-      this.numWeaps = 0;
+      this.listWeaps = [];
       this.reactors = 0;
       this.leftThrust = 0;
       this.rightThrust = 0;
@@ -30,7 +30,7 @@ var Ship = function(tiles, cx, cy) {
       for (var i = 0; i < this.tiles.length; i++) {
          switch (this.tiles[i].type) {
             case(GUN) :
-               this.numWeaps++;
+               this.listWeaps(this.tiles[i]);
                break;
             
             case(ENGINE_DOWN) :
