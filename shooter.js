@@ -15,8 +15,8 @@ function loadShooter()
    ship = new Ship([new Tile(testTileImage, GRID * 5, GRID * 6, [true, true, true, true], COCKPIT),new Tile(testTileImage, GRID * 3, GRID * 2, [true, true, true, true], COCKPIT)], 2, 4);
    ship.x = STARTX;
    ship.y = STARTY;
-   ship.leftThrust = 100;
-   ship.rightThrust = 1;
+   ship.leftThrust = 1;
+   ship.rightThrust = 3;
   
    shipMid = (SHIP_WIDTH * INTERNAL_GRID) / 2;
    shipTarX = STARTX;
@@ -28,14 +28,16 @@ function updateShooter(delta)
    movePlayer(delta);
    for (var i = 0; i < bulletList.length; i++)
    {
+
       bulletList[i].update(delta);
-      if (bulletList[i].py < -50 ||
-          bulletList[i].py > BG_HEIGHT + 50 ||
-          bulletList[i].px < -50 ||
-          bulletList[i].py > BG_WIDTH + 50)
+      if (bulletList[i].posY < -BULLET_SIZE ||
+          bulletList[i].posY > BG_HEIGHT + BULLET_SIZE ||
+          bulletList[i].posX < -BULLET_SIZE ||
+          bulletList[i].posX > BG_WIDTH + BULLET_SIZE)
       {
          bulletList.splice(i--, 1);
       }
+      console.log("updating " + (i + 1) + " bullets");
    }
    
 }
