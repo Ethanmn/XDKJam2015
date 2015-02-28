@@ -8,6 +8,9 @@ bulletImage.src = "assets/bullet.png"
 var testTileImage = new Image();
 testTileImage.src = "assets/bootifulart.png";
 
+var hull4 = new Image();
+hull4.src = "assets/4pipe.png";
+
 var test1TileImage = new Image();
 test1TileImage.src = "assets/bootiful1.png";
 

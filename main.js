@@ -25,7 +25,15 @@ function loadGame()
    ctx = document.getElementById("canvas").getContext('2d');
    
    //loadShooter();
-   
+   if (state == MENU) {
+      switchBackground(0);
+   }
+   if (state == BUILD) {
+      switchBackground(1);
+   }
+   if (state == SHOOT) {
+      switchBackground(2);
+   }
    gameLoop();
 }
 

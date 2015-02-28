@@ -193,13 +193,13 @@ function generateTile() {
       //[up, left, down, right]
       switch (rand) {
          case 0:
-            tiles.push(new Tile(testTileImage, GRID * 8, GRID * 1, [true, true, true, true], HULL));
+            tiles.push(new Tile(hull4, GRID * 8, GRID * 1, [true, true, true, true], HULL));
             break;
          case 1:
-            tiles.push(new Tile(testTileImage, GRID * 8, GRID * 1, [true, true, true, true], HULL));
+            tiles.push(new Tile(hull4, GRID * 8, GRID * 1, [true, true, true, true], HULL));
             break;
          case 2:
-            tiles.push(new Tile(testTileImage, GRID * 8, GRID * 1, [true, true, true, true], HULL));
+            tiles.push(new Tile(hull4, GRID * 8, GRID * 1, [true, true, true, true], HULL));
             break;
          case 3:
             tiles.push(new Tile(testGunTileImage, GRID * 8, GRID * 1, [false, false, true, false], GUN));
