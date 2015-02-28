@@ -209,7 +209,7 @@ function generateTile() {
 function checkNewShip() {
    if (newShipButtonX <= mouseX && newShipButtonX + newShipButtonW >= mouseX &&
       newShipButtonY <= mouseY && newShipButtonY + newShipButtonH >= mouseY) {
-      ship = exportShip();
+      buildTimer = 0;
    }
 }
 

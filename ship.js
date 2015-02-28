@@ -9,6 +9,7 @@ var Ship = function(tiles, cx, cy) {
       this.cx = cx;
       this.cy = cy;
       this.energy = 0;
+      this.numReactors = 0;
       this.tiles = []; //converted tiles, don't call the older methods or else bad stuff happens.
       // this is totally not hacky. Totally.
       for (var i = 0; i < tiles.length; i++) {
@@ -23,7 +24,7 @@ var Ship = function(tiles, cx, cy) {
    
    this.countComponents = function() {
       this.listWeaps = [];
-      this.reactors = 0;
+      this.numReactors = 0;
       this.leftThrust = 0;
       this.rightThrust = 0;
       this.speed = 0;
@@ -140,5 +141,14 @@ var Ship = function(tiles, cx, cy) {
          ctx.stroke();*/
          //this.tiles[i].shipDraw(ctx, this.x, this.y);
       }
+      ctx.fillStyle = '#ff0000';
+      ctx.font = "16px Calibri";
+      ctx.fillText("Energy: " + Math.round(this.energy), 50, 50);
+      ctx.stroke();
+   }
+   
+   this.update = function(delta)
+   {
+      this.energy += this.numReactors * magic / 2;
    }
 }

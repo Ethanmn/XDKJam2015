@@ -18,6 +18,7 @@ function loadShooter()
    ship.y = STARTY;
    ship.leftThrust = 1;
    ship.rightThrust = 3;
+   ship.numReactors = 1;
   
    shipMid = (SHIP_WIDTH * INTERNAL_GRID) / 2;
    shipTarX = STARTX;
@@ -38,6 +39,8 @@ function updateShooter(delta)
          bulletList.splice(i--, 1);
       }
    }
+  
+   ship.update(delta);
 }
 
 function drawShooter()
@@ -113,11 +116,15 @@ function shoot()
 {
    for (var k = 0; k < ship.listWeaps.length; k++)
    {
-      var ang = Math.atan2(mouseY + (BULLET_SIZE / 2) - INTERNAL_GRID/2 - ship.listWeaps[k].y * INTERNAL_GRID - ship.y, mouseX + (BULLET_SIZE / 2) - INTERNAL_GRID/2 - ship.x - ship.listWeaps[k].x * INTERNAL_GRID);
-      console.log(ang * (180/Math.PI));
-      var vx = Math.cos(ang) * BULLET_VEL;
-      var vy = Math.sin(ang) * BULLET_VEL;
+      if (ship.energy >= 5)
+      {
+         var ang = Math.atan2(mouseY + (BULLET_SIZE / 2) - INTERNAL_GRID/2 - ship.listWeaps[k].y * INTERNAL_GRID - ship.y, mouseX + (BULLET_SIZE / 2) - INTERNAL_GRID/2 - ship.x - ship.listWeaps[k].x * INTERNAL_GRID);
+         var vx = Math.cos(ang) * BULLET_VEL;
+         var vy = Math.sin(ang) * BULLET_VEL;
+         ship.energy -= 5;
+         
+         bulletList.push(new Bullet(ship.x + ship.listWeaps[k].x * INTERNAL_GRID, ship.y + ship.listWeaps[k].y * INTERNAL_GRID, vx, vy));
+      }
       
-      bulletList.push(new Bullet(ship.x + ship.listWeaps[k].x * INTERNAL_GRID, ship.y + ship.listWeaps[k].y * INTERNAL_GRID, vx, vy));
    }
 }
