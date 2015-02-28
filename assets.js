@@ -29,6 +29,15 @@ lHull3.src = "assets/tileL3.png";
 var lHull4 = new Image();
 lHull4.src = "assets/tileL4.png";
 
+var tHull1 = new Image();
+tHull1.src = "assets/tileT1.png";
+var tHull2 = new Image();
+tHull2.src = "assets/tileT2.png";
+var tHull3 = new Image();
+tHull3.src = "assets/tileT3.png";
+var tHull4 = new Image();
+tHull4.src = "assets/tileT4.png";
+
 var testGunTileImage = new Image();
 testGunTileImage.src = "assets/goon.png";
 
