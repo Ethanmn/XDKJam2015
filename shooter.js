@@ -3,7 +3,7 @@ function loadShooter()
    addEventListener("mousedown", shooterCheck, false);
 }
 
-function updateShooter()
+function updateShooter(delta)
 {
    
 }

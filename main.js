@@ -35,7 +35,7 @@ function update(delta) {
       builderUpdate(delta);
    }
    if (state == SHOOT) {
-      //ethan put your stuff here for update
+      updateShooter(delta)
    }
    //do stuff here, happens every frame.
 }
