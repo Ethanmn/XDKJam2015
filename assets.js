@@ -30,3 +30,6 @@ trashImage.src = "assets/trash.png";
 
 var mainMenuImage = new Image();
 mainMenuImage.src = "assets/MenuScreen.png";
+
+var shopMenuImage = new Image();
+shopMenuImage.src = "assets/ShopMenu.png";
