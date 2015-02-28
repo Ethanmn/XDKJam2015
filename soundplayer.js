@@ -1,17 +1,19 @@
 var bgArray = [Hustle, RoboWestern, OutlawLand];
 var sfxArray = [, laser, trash, error];
 
-var curSfx = 0, curBG = 0;
+var curSfx = 0, curBG = 1;
 var METAL = 0, LASER = 1, TRASH = 2, ERROR = 3;
 
 var clangNum = 0;
 
 function switchBackground (bg) {
-	bgArray[curBG].pause();
-	bgArray[curBG].currentTime = 0;
+	if (curBG != bg) {
+		bgArray[curBG].pause();
+		bgArray[curBG].currentTime = 0;
 
-	bgArray[bg%bgArray.length].play();
-	curBG = bg%bgArray.length;
+		bgArray[bg%bgArray.length].play();
+		curBG = bg%bgArray.length;
+	}
 
 	return curBG;
 }

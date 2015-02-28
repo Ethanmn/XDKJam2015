@@ -166,6 +166,7 @@ function builderMouseHoldEvent(e){
 }
 
 function builderMouseUpEvent(e) {
+   var isTrash = 0; // used to make sure that the METAL sfx doesn't play when you put something in the trash
 
    if (state == BUILD) {
       for (var i = 0; i < tiles.length; i++) {
@@ -177,12 +178,15 @@ function builderMouseUpEvent(e) {
                tiles.splice(i--, 1);
                playSFX(TRASH);
                burn += 200;
+               isTrash++;
                
             }
             if(tiles[i].checkPlacementLegality()) {
                tiles[i].moveable = false;
                generateTile();
-               playSFX(METAL);
+               
+               if(isTrash == 0)
+                  playSFX(METAL);
             }
             else {
                tiles[i].x = tiles[i].xPrev;
