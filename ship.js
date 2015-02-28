@@ -1,4 +1,7 @@
 var INTERNAL_GRID = 16;
+var SHIP_WIDTH = 5;
+var SHIP_HEIGHT = 9;
+
 var Ship = function(tiles, cx, cy) {
 
    this.init = function(tiles, cx, cy) {
@@ -84,17 +87,17 @@ var Ship = function(tiles, cx, cy) {
       var containsInNew = function(element) {
          for (var k = 0; k < newTiles.length; k++) {
             if (newTiles[k].x == element.x && newTiles[k].y == element.y) {
-               console.log("found it!");
+               //console.log("found it!");
                return true;
             }
          }
-         console.log("fail to find.");
+         //console.log("fail to find.");
          return false;
       }
       
       var i = 0;
       while (i < newTiles.length) {
-         console.log(i);
+         //console.log(i);
          for (var j = 0; j < this.tiles.length; j++) {
             if (!containsInNew(this.tiles[j])) {
                if (newTiles[i].directions[UP] && this.tiles[j].x == newTiles[i].x && this.tiles[j].y == newTiles[i].y - 1) {
@@ -125,8 +128,6 @@ var Ship = function(tiles, cx, cy) {
    }
    
    this.draw = function(ctx) {
-      //console.log("got to shipdraw");
-      //console.log(this.tiles);
       for (var i = 0; i < this.tiles.length; i++) {
          //ctx.drawImage(this.tiles[i].image, 0, 0);
 

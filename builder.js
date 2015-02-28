@@ -1,6 +1,6 @@
-addEventListener("mousedown", mouseDownEvent);
-addEventListener("mousemove", mouseHoldEvent);
-addEventListener("mouseup", mouseUpEvent);
+addEventListener("mousedown", builderMouseDownEvent);
+addEventListener("mousemove", builderMouseHoldEvent);
+addEventListener("mouseup", builderMouseUpEvent);
 
 
 var TESTON = true;
@@ -45,10 +45,14 @@ tiles.push(new Tile(test2TileImage, 64, 32, [false, true, false, true], HULL));
 tiles.push(new Tile(test3TileImage, 96, 32, [false, true, true, true], HULL));
 tiles.push(new Tile(test3TileImage, 128, 32, [false, true, true, true], HULL));
 */
-   
 var buildTimerMax = 30000;
-var buildTimer = buildTimerMax;
-var timerOn = true;
+var buildTimer = 0;
+var timerOn = false;
+
+var startBuilder = function() {
+   buildTimer = buildTimerMax;
+   timerOn = true;
+}
 
 function builderUpdate(delta) {
    if (mouseDown) {
@@ -103,13 +107,13 @@ function builderDraw() {
    }
 }
 
-function mouseDownEvent(e){
+function builderMouseDownEvent(e){
    if (state == BUILD) {
       console.log(e);
       mouseX = e.offsetX;
       mouseY = e.offsetY;
       
-      checkDamage(); //button check 1
+      checkDamage(); //button check: REMOVE ME WHEN SHOOTER IS UP TO DATE
       
       checkNewShip(); //button 2
       
@@ -126,7 +130,18 @@ function mouseDownEvent(e){
    }
 }
 
-function mouseHoldEvent(e){
+function checkDamage() {
+   if (newTileButtonX <= mouseX && newTileButtonX + newTileButtonW >= mouseX &&
+      newTileButtonY <= mouseY && newTileButtonY + newTileButtonH >= mouseY) {
+      //console.log("pressed the button");
+      var dx = Math.random() * 80;
+      var dy = Math.random() * 192;
+      console.log("(" + dx+ ", "+dy+")");
+      console.log(ship.damage(dx, dy));
+   }
+}
+
+function builderMouseHoldEvent(e){
    if (state == BUILD) {
       if (mouseDown) {
          mouseX = e.offsetX;
@@ -136,7 +151,7 @@ function mouseHoldEvent(e){
    }
 }
 
-function mouseUpEvent(e) {
+function builderMouseUpEvent(e) {
    if (state == BUILD) {
       for (var i = 0; i < tiles.length; i++) {
          if (tiles[i].selected) {
@@ -162,16 +177,7 @@ function mouseUpEvent(e) {
    }
 }
 
-function checkDamage() {
-   if (newTileButtonX <= mouseX && newTileButtonX + newTileButtonW >= mouseX &&
-      newTileButtonY <= mouseY && newTileButtonY + newTileButtonH >= mouseY) {
-      //console.log("pressed the button");
-      var dx = Math.random() * 80;
-      var dy = Math.random() * 192;
-      console.log("(" + dx+ ", "+dy+")");
-      console.log(ship.damage(dx, dy));
-   }
-}
+
 
 function generateTile() {
       //generate a tile here.

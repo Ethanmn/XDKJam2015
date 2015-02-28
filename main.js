@@ -1,13 +1,16 @@
 var delta = 20; // 50 FPS
 var BUILD = 0;
 var SHOOT = 1;
+var MENU = 2;
+var CREDITS = 3;
+var HELP = 4;
 var ctx;
 var mouseDown = false;
 var mouseX, mouseY;
 
 // INITIALIZE ALL ASSETS IN ASSETS.JS!
 
-var state = BUILD; //Ethan, edit this line to see your stuff drawn (change to state = SHOOT;)
+var state = MENU; //Ethan, edit this line to see your stuff drawn (change to state = SHOOT;)
 
 
 
@@ -74,4 +77,5 @@ function draw()
    if (state == BUILD) {
       builderDraw();
    }
+   menuDraw(ctx);
 }
