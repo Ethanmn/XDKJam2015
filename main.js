@@ -4,10 +4,12 @@ var ctx;
 var player = new Image(); 
 player.src = "tempPlayer.png";
 
-
 function loadGame()
 {
    ctx = document.getElementById("canvas").getContext('2d');
+   addEventListener("mousedown", function(e){
+      console.log(e);
+   }, false);
    gameLoop();
 }
 
@@ -20,6 +22,7 @@ function gameLoop()
 }
 
 function update(delta) {
+   builderUpdate(delta);
    //do stuff here, happens every frame.
 }
 
