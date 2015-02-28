@@ -16,6 +16,9 @@ test2TileImage.src = "assets/bootiful2.png";
 var test3TileImage = new Image();
 test3TileImage.src = "assets/bootiful3.png";
 
+var testGunTileImage = new Image();
+testGunTileImage = "assets/goon.png";
+
 var gridImage = new Image();
 gridImage.src = "assets/gridsquare.png";
 
