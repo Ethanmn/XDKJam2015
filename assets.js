@@ -38,9 +38,13 @@ mainMenuImage.src = "assets/MenuScreen.png";
 var shopMenuImage = new Image();
 shopMenuImage.src = "assets/ShopMenu.png";
 
-//Sound effects section
+//background music section
 var Hustle = new Audio("assets/sounds/Hustle.wav");
+Hustle.loop = true;
 var RoboWestern = new Audio("assets/sounds/Robo-Western.wav");
+RoboWestern.loop = true;
 var OutlawLand = new Audio("assets/sounds/584409_Outlaw-Land.wav");
+OutlawLand.loop = true;
+//Sound effects section
 var laser = new Audio("assets/sounds/Gun_Shot-Marvin-1140816320.wav");
 var clangs = [new Audio("assets/sounds/clang1.wav"), new Audio("assets/sounds/clang2.wav"), new Audio("assets/sounds/clang3.wav")];
