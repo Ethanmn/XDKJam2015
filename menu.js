@@ -1,8 +1,6 @@
 addEventListener("mousedown", menuMouseDownEvent);
 var menuDraw = function(ctx) {
-   if (state == MENU) {
-      ctx.drawImage(mainMenuImage, 0, 0);
-   }
+   ctx.drawImage(mainMenuImage, 0, 0);
 }
 
 function menuMouseDownEvent(e) {

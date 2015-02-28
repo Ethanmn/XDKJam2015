@@ -3,8 +3,7 @@ addEventListener("mousemove", builderMouseHoldEvent);
 addEventListener("mouseup", builderMouseUpEvent);
 
 
-var TESTON = true;
-var ship;
+//var TESTON = true;
 
 
 var GRID = 32; //size of a grid square
@@ -30,10 +29,7 @@ var newShipButtonW = 32;
 var newShipButtonH = 32;
 
 var tiles = [];
-var startTile = new Tile(testTileImage, GRID * 5, GRID * 6, [true, true, true, true], COCKPIT);
-startTile.moveable = false;
-tiles.push(startTile);
-generateTile();
+var startTile;
 
 /*
 tiles.push(new Tile(test1TileImage, 0, 0, [false, true, false, false], HULL));
@@ -50,8 +46,13 @@ var buildTimer = 0;
 var timerOn = false;
 
 var startBuilder = function() {
+   tiles = [];
+   startTile = new Tile(testTileImage, GRID * 5, GRID * 6, [true, true, true, true], COCKPIT);
+   startTile.moveable = false;
+   tiles.push(startTile);
    buildTimer = buildTimerMax;
    timerOn = true;
+   generateTile();
 }
 
 function builderUpdate(delta) {
@@ -65,11 +66,12 @@ function builderUpdate(delta) {
       console.log("timer expired");
       ship = exportShip();
       timerOn = false;
+      state = STORE;
    }
 }
 
 function builderDraw() {
-   if(TESTON){ //remove
+   //if(TESTON){ //remove
    //DRAW THE GRID (bottom layer after background)
    for (var i = GRIDOFFX; i < GRIDOFFX + GRIDW; i++) {
       for (var j = GRIDOFFY; j < GRIDOFFY + GRIDH; j++) {
@@ -89,9 +91,7 @@ function builderDraw() {
    }
    ctx.font = "40px Calibri"
    ctx.fillText("Time Left: " + Math.floor(buildTimer/1000), 10, 50);
-   
-   //draw the new tile button
-   //
+
    ctx.drawImage(newShipButtonImage, newShipButtonX, newShipButtonY);
    ctx.drawImage(trashImage, trashX, trashY);
    
@@ -99,12 +99,12 @@ function builderDraw() {
    for (var i = 0; i < tiles.length; i++) {
       tiles[i].draw(ctx);
    }
-   } //remove
+   /*} //remove
    else {
       //console.log("shipdraw");
       ctx.drawImage(newTileButtonImage, newTileButtonX, newTileButtonY);
       ship.draw(ctx);
-   }
+   }*/
 }
 
 function builderMouseDownEvent(e){
@@ -113,7 +113,7 @@ function builderMouseDownEvent(e){
       mouseX = e.offsetX;
       mouseY = e.offsetY;
       
-      checkDamage(); //button check: REMOVE ME WHEN SHOOTER IS UP TO DATE
+      //checkDamage(); //button check: REMOVE ME WHEN SHOOTER IS UP TO DATE
       
       checkNewShip(); //button 2
       
@@ -129,7 +129,7 @@ function builderMouseDownEvent(e){
       mouseDown = true;
    }
 }
-
+/*
 function checkDamage() {
    if (newTileButtonX <= mouseX && newTileButtonX + newTileButtonW >= mouseX &&
       newTileButtonY <= mouseY && newTileButtonY + newTileButtonH >= mouseY) {
@@ -139,7 +139,7 @@ function checkDamage() {
       console.log("(" + dx+ ", "+dy+")");
       console.log(ship.damage(dx, dy));
    }
-}
+}*/
 
 function builderMouseHoldEvent(e){
    if (state == BUILD) {
@@ -216,6 +216,6 @@ function exportShip() {
          ship.push(tiles[i]);
       }
    }
-   TESTON = false;
+   //TESTON = false;
    return new Ship(ship, 2, 4);
 }
