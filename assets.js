@@ -8,8 +8,16 @@ bulletImage.src = "assets/bullet.png"
 var asteroidImage = new Image();
 asteroidImage.src = "assets/tempAsteroid.png"
 
-var testTileImage = new Image();
-testTileImage.src = "assets/bootifulart.png";
+var gun1 = new Image();
+gun1.src = "assets/gunEdge1.png";
+var gun2 = new Image();
+gun2.src = "assets/gunEdge2.png";
+var gun3 = new Image();
+gun3.src = "assets/gunEdge3.png";
+var gunT = new Image();
+gunT.src = "assets/gunT.png";
+
+
 var cockpitImage = new Image();
 cockpitImage.src = "assets/cockpit.png";
 
@@ -54,7 +62,9 @@ var trashImage3 = new Image();
 trashImage3.src = "assets/trashsmall3.png";
 
 var mainMenuImage = new Image();
-mainMenuImage.src = "assets/MenuScreen.png";
+mainMenuImage.src = "assets/MenuScreenMuted.png";
+var mainMenuImageMuted = new Image();
+mainMenuImageMuted.src = "assets/MenuScreen.png";
 
 var shopMenuImage = new Image();
 shopMenuImage.src = "assets/ShopMenu.png";
