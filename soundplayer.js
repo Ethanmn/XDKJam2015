@@ -1,9 +1,11 @@
 var bgArray = [Hustle, RoboWestern, OutlawLand];
-var sfxArray = [laser];
+var sfxArray = [, laser];
 
-var numSfx = 1;
+var numSfx = 2;
 var curBG = 0;
 var numBG = 3;
+
+var METAL = 0, LASER = 1;
 
 function switchBackground (bg) {
 	bgArray[curBG].pause();
@@ -16,5 +18,9 @@ function switchBackground (bg) {
 }
 
 function playSFX(sfx) {
-	sfxArray[sfx%numSfx];
+	if (sfx == 0) {
+		clangs[Math.floor(Math.random() * 3) + 1].play();
+	} else {
+		sfxArray[sfx%sfxArray.length].play();
+	}
 }

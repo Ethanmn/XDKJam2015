@@ -40,3 +40,4 @@ var Hustle = new Audio("assets/sounds/Hustle.wav");
 var RoboWestern = new Audio("assets/sounds/Robo-Western.wav");
 var OutlawLand = new Audio("assets/sounds/584409_Outlaw-Land.wav");
 var laser = new Audio("assets/sounds/Gun_Shot-Marvin-1140816320.wav");
+var clangs = [new Audio("assets/sounds/clang1.wav"), new Audio("assets/sounds/clang2.wav"), new Audio("assets/sounds/clang3.wav")];

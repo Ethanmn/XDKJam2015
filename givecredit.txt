@@ -1,3 +1,9 @@
 gun-shot marvin = http://soundbible.com/2004-Gun-Shot.html
 outlaw land = http://www.newgrounds.com/audio/listen/584409
+Button press = http://soundbible.com/1672-Button-Press.html
+Metal clangs = 
+	http://soundbible.com/947-Metal-Bang.html
+	http://soundbible.com/906-Drop-Sword.html
+	http://soundbible.com/1742-Anvil-Impact-1x.html
+	
 Everything else = http://incompetech.com/music/royalty-free/index.html
