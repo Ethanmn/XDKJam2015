@@ -1,6 +1,9 @@
 var player = new Image(); // you probably want to rename this.
 player.src = "assets/tempPlayer.png";
 
+var bulletImage = new Image();
+bulletImage.src = "assets/bullet.png"
+
 var testTileImage = new Image();
 testTileImage.src = "assets/bootifulart.png";
 

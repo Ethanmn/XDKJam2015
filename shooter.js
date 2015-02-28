@@ -1,14 +1,14 @@
+addEventListener("mousedown", shooterCheck, false);
+
 var STARTX;
 var STARTY;
-var shipTarX ;
+var shipTarX;
 var shipTarY;
-var startUpdate = false;
 var shipMid;
+var bulletList = [];
 
 function loadShooter()
 {
-   addEventListener("mousedown", shooterCheck, false);
-   
    STARTX = (BG_WIDTH / 2);
    STARTY = BG_HEIGHT - (SHIP_HEIGHT * INTERNAL_GRID);
 
@@ -25,10 +25,37 @@ function loadShooter()
 
 function updateShooter(delta)
 {
+   movePlayer(delta);
+   for (var i = 0; i < bulletList.length; i++)
+   {
+      bulletList[i].update(delta);
+      if (bulletList[i].py < -50 ||
+          bulletList[i].py > BG_HEIGHT + 50 ||
+          bulletList[i].px < -50 ||
+          bulletList[i].py > BG_WIDTH + 50)
+      {
+         bulletList.splice(i--, 1);
+      }
+   }
+   
+}
+
+function drawShooter()
+{
+   ship.draw(ctx);
+   for (var i = 0; i < bulletList.length; i++)
+   {
+      //console.log("draw bullet #" + i);
+      bulletList[i].draw(ctx);
+   }
+}
+
+function movePlayer(delta)
+{
    /* Left thrust shoots left, moves RIGHT
-      right thrust shoots right, move LEFT */
-   var lThrust = ship.leftThrust * (delta / 100);
-   var rThrust = ship.rightThrust * (delta / 100);
+   right thrust shoots right, move LEFT */
+   var lThrust = ship.leftThrust * magic;
+   var rThrust = ship.rightThrust * magic;
    if (ship.x < shipTarX)
    {
       if (ship.x + lThrust > shipTarX)
@@ -56,24 +83,28 @@ function updateShooter(delta)
    {
       ship.x = shipTarX;
    }
-   
-}
-
-function drawPlayer()
-{
-   ship.draw(ctx);
 }
 
 function shooterCheck(e)
 {
-   if (e.offsetY > (BG_HEIGHT - (SHIP_HEIGHT * INTERNAL_GRID)))
+   mouseX = e.offsetX;
+   mouseY = e.offsetY;
+   
+   if (mouseY > (BG_HEIGHT - (SHIP_HEIGHT * INTERNAL_GRID)))
    {
       console.log("Move!");
-      shipTarX = e.offsetX - shipMid;
+      shipTarX = mouseX - shipMid;
    }
    else
    {
       console.log("Shoot!");
+      
+      var ang = Math.atan2(mouseY - (BULLET_SIZE / 2) - ship.y, mouseX - (BULLET_SIZE / 2) - ship.x);
+      console.log(ang * (180/Math.PI));
+      var vx = Math.cos(ang) * BULLET_VEL;
+      var vy = Math.sin(ang) * BULLET_VEL;
+      
+      bulletList.push(new Bullet(ship.x, ship.y, vx, vy));
    }
    
 }

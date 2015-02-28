@@ -1,4 +1,5 @@
 var delta = 20; // 50 FPS
+var magic = delta / 100;
 var BUILD = 0;
 var SHOOT = 1;
 var MENU = 2;
@@ -12,13 +13,9 @@ var BG_WIDTH = 352;
 
 var ship;
 
-
 // INITIALIZE ALL ASSETS IN ASSETS.JS!
 
 var state = SHOOT; //Ethan, edit this line to see your stuff drawn (change to state = SHOOT;)
-
-
-
 
 
 function loadGame()
@@ -54,7 +51,7 @@ function draw()
    ctx.fillRect(0,0, BG_WIDTH, BG_HEIGHT);
    ctx.stroke();
    if (state == SHOOT) {
-      drawPlayer();
+      drawShooter();
    }
    if (state == BUILD) {
       builderDraw();
