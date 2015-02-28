@@ -49,7 +49,7 @@ var timerOn = false;
 
 var startBuilder = function() {
    tiles = [];
-   startTile = new Tile(testTileImage, GRID * 5, GRID * 6, [true, true, true, true], COCKPIT);
+   startTile = new Tile(cockpitImage, GRID * 5, GRID * 6, [true, true, true, true], COCKPIT);
    startTile.moveable = false;
    tiles.push(startTile);
    buildTimer = buildTimerMax;

@@ -10,18 +10,11 @@ asteroidImage.src = "assets/tempAsteroid.png"
 
 var testTileImage = new Image();
 testTileImage.src = "assets/bootifulart.png";
+var cockpitImage = new Image();
+cockpitImage.src = "assets/cockpit.png";
 
 var hull4 = new Image();
 hull4.src = "assets/4pipe.png";
-
-var test1TileImage = new Image();
-test1TileImage.src = "assets/bootiful1.png";
-
-var test2TileImage = new Image();
-test2TileImage.src = "assets/bootiful2.png";
-
-var test3TileImage = new Image();
-test3TileImage.src = "assets/bootiful3.png";
 
 var lHull1 = new Image();
 lHull1.src = "assets/tileL1.png";
