@@ -198,7 +198,7 @@ function generateTile() {
             tiles.push(new Tile(test3TileImage, GRID * 8, GRID * 1, [false, true, true, true], HULL));
             break;
          case 4:
-            tiles.push(new Tile(testGunImage, GRID * 8, GRID * 1, [false, false, true, false], HULL));
+            tiles.push(new Tile(testGunImage, GRID * 8, GRID * 1, [false, false, true, false], GUN));
             break;
          default:
             break;
