@@ -3,7 +3,6 @@ var SHIP_WIDTH = 5;
 var SHIP_HEIGHT = 9;
 
 var Ship = function(tiles, cx, cy) {
-
    this.init = function(tiles, cx, cy) {
       this.x = 0;
       this.y = 0;

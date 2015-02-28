@@ -7,13 +7,15 @@ var HELP = 4;
 var ctx;
 var mouseDown = false;
 var mouseX, mouseY;
+var BG_HEIGHT = 480;
+var BG_WIDTH = 352;
 
 var ship;
 
 
 // INITIALIZE ALL ASSETS IN ASSETS.JS!
 
-var state = MENU; //Ethan, edit this line to see your stuff drawn (change to state = SHOOT;)
+var state = SHOOT; //Ethan, edit this line to see your stuff drawn (change to state = SHOOT;)
 
 
 
@@ -49,7 +51,7 @@ function update(delta) {
 function draw()
 {
    ctx.fillStyle = '#000000';
-   ctx.fillRect(0,0, 500, 600);
+   ctx.fillRect(0,0, BG_WIDTH, BG_HEIGHT);
    ctx.stroke();
    if (state == SHOOT) {
       drawPlayer();
