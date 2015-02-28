@@ -1,10 +1,12 @@
 var BULLET_VEL = 10;
-var BULLET_SIZE = 7;
+var BULLET_SIZE = 6;
 
 var Bullet = function(px, py, vx, vy)
 {
    this.init = function(px, py, vx, vy)
    {
+      this.width = BULLET_SIZE;
+      this.height = BULLET_SIZE;
       this.posX = px;
       this.posY = py;
       this.velX = vx;
@@ -14,11 +16,9 @@ var Bullet = function(px, py, vx, vy)
    
    this.update = function(delta)
    {
-      
       this.posX += this.velX * magic;
       this.posY += this.velY * magic;
       
-      //console.log("px " + this.posX + " py " + this.posY);
       // Add collisions here
    }
    

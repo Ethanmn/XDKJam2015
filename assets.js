@@ -5,6 +5,9 @@ player.src = "assets/tempPlayer.png";
 var bulletImage = new Image();
 bulletImage.src = "assets/bullet.png"
 
+var asteroidImage = new Image();
+asteroidImage.src = "assets/tempAsteroid.png"
+
 var testTileImage = new Image();
 testTileImage.src = "assets/bootifulart.png";
 
