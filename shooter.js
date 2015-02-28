@@ -10,7 +10,7 @@ function updateShooter()
 
 function drawPlayer()
 {
-   ctx.drawImage(player, 50, 50);
+   ship.draw();
 }
 
 function shooterCheck(e)
@@ -20,4 +20,5 @@ function shooterCheck(e)
       console.log("Move!");
    }
    console.log(e);
+   ship.d
 }
