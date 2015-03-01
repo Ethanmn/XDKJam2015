@@ -146,27 +146,28 @@ function shoot()
 {
    if (gunCD < 0)
    {
-      for (var k = 0; k < ship.listWeaps.length; k++)
+      if (ship.energy >= 10)
       {
-         if (ship.energy >= 5)
+         for (var k = 0; k < ship.listWeaps.length; k++)
          {
+
             playSFX(LASER);
             var ang = Math.atan2(mouseY + (BULLET_SIZE / 2) - INTERNAL_GRID/2 - ship.listWeaps[k].y * INTERNAL_GRID - ship.y, mouseX + (BULLET_SIZE / 2) - INTERNAL_GRID/2 - ship.x - ship.listWeaps[k].x * INTERNAL_GRID);
             var vx = Math.cos(ang) * BULLET_VEL;
             var vy = Math.sin(ang) * BULLET_VEL;
-            ship.energy -= 5;
+            
             
             bulletList.push(new Bullet(ship.x + ship.listWeaps[k].x * INTERNAL_GRID, ship.y + ship.listWeaps[k].y * INTERNAL_GRID, vx, vy));
             gunCD = 40;
          }
-         
+         ship.energy -= 10;
       }
    }
 }
 
 function spawnAsteroid()
 {
-   if (Math.random() < 0.03 * difficulty)
+   if (Math.random() < 0.02 * difficulty)
    {
       var astSize = Math.random() * 2;
       var astPosX = Math.random() * (BG_WIDTH - astSize) + astSize;

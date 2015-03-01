@@ -60,7 +60,7 @@ var Tile = function(image, x, y, directions, type) {
       //bounds check
       if (this.x < GRIDOFFX * GRID || this.x >= (GRIDOFFX + GRIDW) * GRID ||
          this.y < GRIDOFFY * GRID || this.y >= (GRIDOFFY + GRIDH) * GRID) {
-         console.log("invalid: oob");
+         //console.log("invalid: oob");
          return false; //oob
       }
       var connected = false;
@@ -70,13 +70,13 @@ var Tile = function(image, x, y, directions, type) {
          if (!other.moveable) { //means the other has already been placed before. Also is not itself.
             //if in the same position
             if (other.x == this.x && other.y == this.y) {
-               console.log("invalid: tile already there");
+               //console.log("invalid: tile already there");
                return false;
             }
             // if the other is below and one piece doesn't allow hookups
             if (other.x == this.x && other.y - GRID == this.y && 
                ((!this.directions[DOWN] && other.directions[UP]) || (this.directions[DOWN] && !other.directions[UP]))) {
-               console.log("invalid: tile below");
+               //console.log("invalid: tile below");
                return false;
             }
             // if the other is above and one piece doesn't allow hookups
@@ -95,7 +95,7 @@ var Tile = function(image, x, y, directions, type) {
             // if the other is right and one piece doesn't allow hookups
             if (other.x - GRID == this.x && other.y == this.y && 
                ((!this.directions[RIGHT] && other.directions[LEFT]) || (this.directions[RIGHT] && !other.directions[LEFT]))) {
-               console.log("invalid: tile right");
+               //console.log("invalid: tile right");
                return false;
             }
             if (other.x - GRID == this.x && other.y == this.y && other.directions[LEFT] && this.directions[RIGHT] || 
