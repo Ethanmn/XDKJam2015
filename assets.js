@@ -8,6 +8,13 @@ bulletImage.src = "assets/bullet.png"
 var asteroidImage = new Image();
 asteroidImage.src = "assets/asteroid.png"
 
+var engine1 = new Image();
+engine1.src = "assets/engineEnd.png";
+var engine2 = new Image();
+engine2.src = "assets/engineLine.png";
+var engine3 = new Image();
+engine3.src = "assets/engineT.png";
+
 var react1 = new Image();
 react1.src = "assets/tileReactor1.png"
 var react2 = new Image();
