@@ -105,4 +105,5 @@ OutlawLand.loop = true;
 var error = new Audio("assets/sounds/error.wav");
 var trash = new Audio("assets/sounds/fireball.wav");
 var laser = new Audio("assets/sounds/Gun_Shot-Marvin-1140816320.wav");
+var boomSound = new Audio("assets/sounds/explosion.wav");
 var clangs = [new Audio("assets/sounds/clang1.wav"), new Audio("assets/sounds/clang2.wav"), new Audio("assets/sounds/clang3.wav")];

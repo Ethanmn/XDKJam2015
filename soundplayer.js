@@ -1,8 +1,8 @@
 var bgArray = [Hustle, RoboWestern, OutlawLand];
-var sfxArray = [, laser, trash, error];
+var sfxArray = [, laser, trash, error, boomSound];
 
 var curSfx = 0, curBG = 1;
-var METAL = 0, LASER = 1, TRASH = 2, ERROR = 3;
+var METAL = 0, LASER = 1, TRASH = 2, ERROR = 3, BOOM = 4;
 
 var muted = 1.0;
 
