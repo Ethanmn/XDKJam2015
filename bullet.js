@@ -1,5 +1,6 @@
 var BULLET_VEL = 10;
 var BULLET_SIZE = 6;
+var BULLET_COST = 10
 
 var Bullet = function(px, py, vx, vy)
 {

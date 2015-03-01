@@ -13,7 +13,6 @@ var Ship = function(tiles, cx, cy) {
       this.tiles = []; //converted tiles, doon't call the older methods or else bad stuff happens.
       // this is totally not hacky. Totally.
       for (var i = 0; i < tiles.length; i++) {
-         
          tiles[i].x = tiles[i].x / GRID - GRIDOFFX;
          tiles[i].y = tiles[i].y / GRID - GRIDOFFY;
       }
