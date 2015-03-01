@@ -10,3 +10,5 @@ Explosion = SEFY on youtube
 fireball = http://soundbible.com/1359-Small-Fireball.html
 error = http://www.soundjay.com/beep-sounds-1.html
 Everything else = http://incompetech.com/music/royalty-free/index.html
+
+background Image = http://omnireboot.com/wp-content/uploads/2014/04/space-background-black1.jpg
