@@ -6,7 +6,23 @@ var bulletImage = new Image();
 bulletImage.src = "assets/bullet.png"
 
 var asteroidImage = new Image();
-asteroidImage.src = "assets/tempAsteroid.png"
+asteroidImage.src = "assets/asteroid.png"
+
+var engine1 = new Image();
+engine1.src = "assets/engineEnd.png";
+var engine2 = new Image();
+engine2.src = "assets/engineLine.png";
+var engine3 = new Image();
+engine3.src = "assets/engineT.png";
+
+var react1 = new Image();
+react1.src = "assets/tileReactor1.png"
+var react2 = new Image();
+react2.src = "assets/tileReactor2.png"
+var react3 = new Image();
+react3.src = "assets/tileReactor3.png"
+var react4 = new Image();
+react4.src = "assets/tileReactor4.png"
 
 var gun1 = new Image();
 gun1.src = "assets/gunEdge1.png";
