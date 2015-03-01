@@ -82,14 +82,14 @@ var Tile = function(image, x, y, directions, type) {
             // if the other is above and one piece doesn't allow hookups
             if (other.x == this.x && other.y + GRID == this.y && 
                ((!this.directions[UP] && other.directions[DOWN]) || (this.directions[UP] && !other.directions[DOWN]))) {
-               console.log("invalid: tile above");
+               //console.log("invalid: tile above");
                return false;
             }
             // if the other is left and one piece doesn't allow hookups
             if (other.x + GRID == this.x && other.y == this.y && 
                ((!this.directions[LEFT] && other.directions[RIGHT]) || (this.directions[LEFT] && !other.directions[RIGHT]))) {
 
-               console.log("invalid: tile left");
+               //console.log("invalid: tile left");
                return false;
             }
             // if the other is right and one piece doesn't allow hookups

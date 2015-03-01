@@ -61,7 +61,7 @@ function updateShooter(delta)
    bulletCollision();
    shipCollision();
    
-   difficulty += (ship.speed * magic) / 1000;
+   difficulty += (ship.speed * magic) / 500;
    gunCD -= 8 * magic;
 }
 
@@ -157,7 +157,7 @@ function shoot()
             ship.energy -= 5;
             
             bulletList.push(new Bullet(ship.x + ship.listWeaps[k].x * INTERNAL_GRID, ship.y + ship.listWeaps[k].y * INTERNAL_GRID, vx, vy));
-            gunCD = 100;
+            gunCD = 40;
          }
          
       }
@@ -166,7 +166,7 @@ function shoot()
 
 function spawnAsteroid()
 {
-   if (Math.random() < 0.03)
+   if (Math.random() < 0.03 * difficulty)
    {
       var astSize = Math.random() * 2;
       var astPosX = Math.random() * (BG_WIDTH - astSize) + astSize;
