@@ -82,8 +82,8 @@ function movePlayer(delta)
 {
    /* Left thrust shoots left, moves RIGHT
    right thrust shoots right, move LEFT */
-   var lThrust = ship.leftThrust * magic;
-   var rThrust = ship.rightThrust * magic;
+   var lThrust = ship.leftThrust * magic + 1;
+   var rThrust = ship.rightThrust * magic + 1;
    if (ship.x < shipTarX)
    {
       if (ship.x + lThrust > shipTarX)
