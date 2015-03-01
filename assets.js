@@ -87,12 +87,11 @@ var trashImage3 = new Image();
 trashImage3.src = "assets/trashsmall3.png";
 
 var mainMenuImage = new Image();
-mainMenuImage.src = "assets/MenuScreenMuted.png";
+mainMenuImage.src = "assets/MenuScreen2.png";
 var mainMenuImageMuted = new Image();
-mainMenuImageMuted.src = "assets/MenuScreen.png";
+mainMenuImageMuted.src = "assets/MenuScreen2Muted.png";
 
-var shopMenuImage = new Image();
-shopMenuImage.src = "assets/ShopMenu.png";
+var creditMenu = new Image
 
 //background music section
 var Hustle = new Audio("assets/sounds/Hustle.wav");

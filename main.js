@@ -5,7 +5,8 @@ var SHOOT = 1;
 var MENU = 2;
 var CREDITS = 3;
 var HELP = 4;
-var STORE = 5;
+var TUTORIAL1 = 5;
+var TUTORIAL2 = 6;
 var ctx;
 var mouseDown = false;
 var mouseX, mouseY;
@@ -66,8 +67,8 @@ function draw()
       case MENU:
          menuDraw(ctx);
          break;
-      case STORE:
-         storeDraw(ctx);
+      case CREDITS:
+         creditDraw(ctx);
          break;
    }
    
