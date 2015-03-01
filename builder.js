@@ -272,16 +272,16 @@ function generateTile() {
             tiles.push(new Tile(engine3, GRID * 8, GRID * 1, [true, true, false, true], ENGINE_DOWN));
             break;
          case 21:
-            tiles.push(new Tile(enginer1, GRID * 8, GRID * 1, [false, true, false, false], ENGINE_RIGHT));
+            tiles.push(new Tile(enginer1, GRID * 8, GRID * 1, [false, false, false, true], ENGINE_LEFT));
             break;
          case 22:
-            tiles.push(new Tile(enginer2, GRID * 8, GRID * 1, [true, false, true, false], ENGINE_RIGHT));
+            tiles.push(new Tile(enginer2, GRID * 8, GRID * 1, [true, false, true, false], ENGINE_LEFT));
             break;
          case 23:
-            tiles.push(new Tile(enginel1, GRID * 8, GRID * 1, [false, false, false, true], ENGINE_LEFT));
+            tiles.push(new Tile(enginel1, GRID * 8, GRID * 1, [false, true, false, false], ENGINE_RIGHT));
             break;
          case 24:
-            tiles.push(new Tile(enginel2, GRID * 8, GRID * 1, [true, false, true, false], ENGINE_LEFT));
+            tiles.push(new Tile(enginel2, GRID * 8, GRID * 1, [true, false, true, false], ENGINE_RIGHT));
             break;
          default:
             break;
