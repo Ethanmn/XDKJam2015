@@ -1,4 +1,5 @@
-//addEventListener("mousedown", shooterCheck, false);
+addEventListener("mousedown", shooterCheck, false);
+//
 addEventListener("touchstart", shooterCheck, false);
 
 var STARTX;
@@ -13,8 +14,10 @@ var gunCD;
 
 function loadShooter()
 {
-   difficulty = 0;
+   difficulty = 3000;
    gunCD = 0;
+   asteroidList = [];
+   bulletList = [];
    
    STARTX = (BG_WIDTH / 2) + (SHIP_WIDTH * INTERNAL_GRID / 2);
    STARTY = BG_HEIGHT - (SHIP_HEIGHT * INTERNAL_GRID);
@@ -65,7 +68,7 @@ function updateShooter(delta)
    bulletCollision();
    shipCollision();
    
-   difficulty += (ship.speed * magic) / 500;
+   difficulty += ship.speed;
    gunCD -= 8 * magic;
 }
 
@@ -80,7 +83,7 @@ function drawShooter()
    {
       asteroidList[i].draw(ctx);
    }
-   ctx.drawImage(boundBar, 0, BG_HEIGHT - SHIP_HEIGHT * INTERNAL_GRID);
+   //ctx.drawImage(boundBar, 0, BG_HEIGHT - SHIP_HEIGHT * INTERNAL_GRID);
 }
 
 function movePlayer(delta)
@@ -122,11 +125,11 @@ function shooterCheck(e)
    
    if (state == SHOOT) {
       // Use for Mouse
-      //mouseX = offsetX;
-      //mouseY = offsetY;
+      mouseX = e.offsetX;
+      mouseY = e.offsetY;
       
-      mouseX = e.screenX - 8;
-      mouseY = e.screenY - 8;
+      //mouseX = e.screenX - 8;
+      //mouseY = e.screenY - 8;
 
       if (mouseY > (BG_HEIGHT - (SHIP_HEIGHT * INTERNAL_GRID)))
       {
@@ -177,12 +180,12 @@ function shoot()
 
 function spawnAsteroid()
 {
-   if (Math.random() < 0.02 * difficulty)
+   if (Math.random() < 0.00001 * difficulty)
    {
       var astSize = Math.random() * 2;
       var astPosX = Math.random() * (BG_WIDTH - astSize) + astSize;
       var astVelX = Math.random() * (2) - 1;
-      var astVelY = difficulty * Math.random() * (7 - 1) + 1;
+      var astVelY = difficulty * 0.001 + Math.random() * 4;
       
       asteroidList.push(new Asteroid(astPosX, -astSize, astVelX, astVelY, 1, 1));
    }

@@ -1,10 +1,11 @@
-/*addEventListener("mousedown", builderMouseDownEvent);
+addEventListener("mousedown", builderMouseDownEvent);
 addEventListener("mousemove", builderMouseHoldEvent);
-addEventListener("mouseup", builderMouseUpEvent);*/
+addEventListener("mouseup", builderMouseUpEvent);
+/*
 addEventListener("touchstart", builderMouseDownEvent);
 addEventListener("touchmove", builderMouseDownEvent);
 addEventListener("touchend", builderMouseDownEvent);
-
+*/
 
 //var TESTON = true;
 
@@ -50,7 +51,7 @@ var buildTimerMax = 30000;
 var buildTimer = 0;
 var timerOn = false;
 
-var startBuilder = function() {
+function startBuilder() {
    tiles = [];
    startTile = new Tile(cockpitImage, GRID * 5, GRID * 6, [true, true, true, true], COCKPIT);
    startTile.moveable = false;
@@ -129,12 +130,12 @@ function builderMouseDownEvent(e){
    
    if (state == BUILD) {
       //console.log(e);
-      /*for mouse
+      //for mouse
       mouseX = e.offsetX;
       mouseY = e.offsetY;
-      */
-      mouseX = e.screenX + 8;
-      mouseY = e.screenY + 8;
+      
+      //mouseX = e.screenX + 8;
+      //mouseY = e.screenY + 8;
       //checkDamage(); //button check: REMOVE ME WHEN SHOOTER IS UP TO DATE
       
       checkNewShip(); //button 2
@@ -166,12 +167,12 @@ function checkDamage() {
 function builderMouseHoldEvent(e){
    if (state == BUILD) {
       if (mouseDown) {
-         /*
+         
          mouseX = e.offsetX;
          mouseY = e.offsetY;
-         */
-         mouseX = e.screenX + 8;
-         mouseY = e.screenY + 8;
+         
+         //mouseX = e.screenX + 8;
+         //mouseY = e.screenY + 8;
          //console.log("mouse moved");
       }
    }

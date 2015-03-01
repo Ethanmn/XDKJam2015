@@ -1,5 +1,5 @@
-//addEventListener("mousedown", menuMouseDownEvent);
-addEventListener("touchstart", menuMouseDownEvent);
+addEventListener("mousedown", menuMouseDownEvent);
+//addEventListener("touchstart", menuMouseDownEvent);
 var menuDraw = function(ctx) {
    if (muted == 0)
       ctx.drawImage(mainMenuImage, 0, 0);
@@ -17,7 +17,11 @@ var tutorial2Draw = function(ctx) {
    ctx.drawImage(tut2Menu, 0, 0);
 }
 var gameOverDraw = function(ctx) {
+   
    ctx.drawImage(gameOverMenu, 0, 0);
+   ctx.fillStyle = '#ff0000';
+   ctx.font = "40px Calibri"
+   ctx.fillText("Score: " + (difficulty - 3000), 10, 50);
 }
 
 function menuMouseDownEvent(e) {
@@ -25,11 +29,11 @@ function menuMouseDownEvent(e) {
    mouseY = e.offsetY;
    if (state == MENU) {
       // use for mouse
-      //mouseX = e.offsetX;
-      //mouseY = e.offsetY;
+      mouseX = e.offsetX;
+      mouseY = e.offsetY;
       //use for touch
-      mouseX = e.screenX + 8;
-      mouseY = e.screenY + 8;
+      //mouseX = e.screenX + 8;
+      //mouseY = e.screenY + 8;
       //console.log("click get: ("+ mouseX +", " + mouseY + ")");
       if (mouseX > 112 && mouseX < 240 && mouseY > 150 && mouseY < 230) {
          state = BUILD;
