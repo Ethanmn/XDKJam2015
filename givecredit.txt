@@ -6,6 +6,7 @@ Metal clangs =
 	http://soundbible.com/906-Drop-Sword.html
 	http://soundbible.com/1742-Anvil-Impact-1x.html
 	
+Explosion = SEFY on youtube
 fireball = http://soundbible.com/1359-Small-Fireball.html
 error = http://www.soundjay.com/beep-sounds-1.html
 Everything else = http://incompetech.com/music/royalty-free/index.html
