@@ -21,8 +21,6 @@ function loadShooter()
    //ship = new Ship([new Tile(testTileImage, GRID * 5, GRID * 6, [true, true, true, true], COCKPIT),new Tile(testTileImage, GRID * 3, GRID * 2, [true, true, true, true], COCKPIT)], 2, 4);
    ship.x = STARTX;
    ship.y = STARTY;
-   ship.leftThrust = 2;
-   ship.rightThrust = 1;
   
    shipMid = (SHIP_WIDTH * INTERNAL_GRID) / 2;
    shipTarX = STARTX;
@@ -64,7 +62,7 @@ function updateShooter(delta)
    shipCollision();
    
    difficulty += (ship.speed * magic) / 1000;
-   gunCD -= 6 * magic;
+   gunCD -= 8 * magic;
 }
 
 function drawShooter()
