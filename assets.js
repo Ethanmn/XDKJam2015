@@ -8,6 +8,9 @@ bulletImage.src = "assets/bullet.png"
 var asteroidImage = new Image();
 asteroidImage.src = "assets/asteroid.png"
 
+var boundBar = new Image();
+boundBar.src = "assets/boundBar.png"
+
 var engine1 = new Image();
 engine1.src = "assets/engineEnd.png";
 var engine2 = new Image();

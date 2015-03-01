@@ -1,4 +1,5 @@
-addEventListener("mousedown", shooterCheck, false);
+//addEventListener("mousedown", shooterCheck, false);
+addEventListener("touchstart", shooterCheck, false);
 
 var STARTX;
 var STARTY;
@@ -76,6 +77,7 @@ function drawShooter()
    {
       asteroidList[i].draw(ctx);
    }
+   ctx.drawImage(boundBar, 0, BG_HEIGHT - SHIP_HEIGHT * INTERNAL_GRID);
 }
 
 function movePlayer(delta)
@@ -114,9 +116,14 @@ function movePlayer(delta)
 
 function shooterCheck(e)
 {
+   
    if (state == SHOOT) {
-      mouseX = e.offsetX;
-      mouseY = e.offsetY;
+      // Use for Mouse
+      //mouseX = offsetX;
+      //mouseY = offsetY;
+      
+      mouseX = e.screenX - 8;
+      mouseY = e.screenY - 8;
 
       if (mouseY > (BG_HEIGHT - (SHIP_HEIGHT * INTERNAL_GRID)))
       {
