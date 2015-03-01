@@ -4,8 +4,9 @@ var BUILD = 0;
 var SHOOT = 1;
 var MENU = 2;
 var CREDITS = 3;
-var HELP = 4;
-var STORE = 5;
+var TUTORIAL1 = 5;
+var TUTORIAL2 = 6;
+var GAMEOVER = 7;
 var ctx;
 var mouseDown = false;
 var mouseX, mouseY;
@@ -23,7 +24,7 @@ var state = MENU; //Ethan, edit this line to see your stuff drawn (change to sta
 function loadGame()
 {
    ctx = document.getElementById("canvas").getContext('2d');
-   
+
    //loadShooter();
    gameLoop();
 }
@@ -66,8 +67,19 @@ function draw()
       case MENU:
          menuDraw(ctx);
          break;
-      case STORE:
-         storeDraw(ctx);
+      case CREDITS:
+         creditDraw(ctx);
+         break;
+      case TUTORIAL1:
+         tutorial1Draw(ctx);
+         break;
+      case TUTORIAL2:
+         tutorial2Draw(ctx);
+         break;
+      case GAMEOVER:
+         gameOverDraw(ctx);
+         break;
+      default:
          break;
    }
    

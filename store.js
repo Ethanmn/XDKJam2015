@@ -22,8 +22,7 @@ function storeMouseDownEvent(e) {
          state = BUILD;
          startBuilder();
          */
-         state = SHOOT;
-         loadShooter();
+
       }
    }
 }
