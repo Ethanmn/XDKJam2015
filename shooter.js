@@ -7,10 +7,11 @@ var shipTarY;
 var shipMid;
 var bulletList = [];
 var asteroidList = [];
+var difficulty;
 
 function loadShooter()
 {
-   astID = 0;
+   difficulty = 0;
    
    STARTX = (BG_WIDTH / 2) + (SHIP_WIDTH * INTERNAL_GRID / 2);
    STARTY = BG_HEIGHT - (SHIP_HEIGHT * INTERNAL_GRID);
@@ -45,10 +46,10 @@ function updateShooter(delta)
    spawnAsteroid();
    for (var i = 0; i < asteroidList.length; i++)
    {
-      if (asteroidList[i].posY < -(asteroidList[i].size) ||
-          asteroidList[i].posY > BG_HEIGHT + asteroidList[i].size ||
-          asteroidList[i].posX < -(asteroidList[i].size) ||
-          asteroidList[i].posX > BG_WIDTH + asteroidList[i].size)
+      if (asteroidList[i].posY < -(asteroidList[i].height) ||
+          asteroidList[i].posY > BG_HEIGHT + asteroidList[i].height ||
+          asteroidList[i].posX < -(asteroidList[i].width) ||
+          asteroidList[i].posX > BG_WIDTH + asteroidList[i].width)
       {
          asteroidList.splice(i--, 1);
          break;
@@ -60,6 +61,8 @@ function updateShooter(delta)
    
    bulletCollision();
    shipCollision();
+   
+   difficulty += (ship.speed * magic) / 1000;
 }
 
 function drawShooter()
@@ -141,13 +144,11 @@ function setTarget()
 
 function shoot()
 {
-   if (ship.listWeaps.length > 0)
-      playSFX(LASER);
-   
    for (var k = 0; k < ship.listWeaps.length; k++)
    {
       if (ship.energy >= 5)
       {
+         playSFX(LASER);
          var ang = Math.atan2(mouseY + (BULLET_SIZE / 2) - INTERNAL_GRID/2 - ship.listWeaps[k].y * INTERNAL_GRID - ship.y, mouseX + (BULLET_SIZE / 2) - INTERNAL_GRID/2 - ship.x - ship.listWeaps[k].x * INTERNAL_GRID);
          var vx = Math.cos(ang) * BULLET_VEL;
          var vy = Math.sin(ang) * BULLET_VEL;
@@ -166,7 +167,7 @@ function spawnAsteroid()
       var astSize = Math.random() * 2;
       var astPosX = Math.random() * (BG_WIDTH - astSize) + astSize;
       var astVelX = Math.random() * (2) - 1;
-      var astVelY = Math.random() * (5 - 1) + 1;
+      var astVelY = difficulty * Math.random() * (7 - 1) + 1;
       
       asteroidList.push(new Asteroid(astPosX, -astSize, astVelX, astVelY, 1, 1));
    }
@@ -204,7 +205,6 @@ function shipCollision()
           asteroidList[a].posY > ship.y - asteroidList[a].height &&
           asteroidList[a].posY < ship.y + SHIP_HEIGHT * INTERNAL_GRID)
       {
-         console.log(ship);
          var isHitT = ship.damage(asteroidList[a].posX + asteroidList[a].width/2 - ship.x,
                      asteroidList[a].posY - ship.y);
          var isHitB = ship.damage(asteroidList[a].posX + asteroidList[a].width/2 - ship.x,

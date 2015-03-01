@@ -18,8 +18,6 @@ var Bullet = function(px, py, vx, vy)
    {
       this.posX += this.velX * magic;
       this.posY += this.velY * magic;
-      
-      // Add collisions here
    }
    
    this.draw = function(ctx)

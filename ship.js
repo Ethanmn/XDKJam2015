@@ -27,7 +27,7 @@ var Ship = function(tiles, cx, cy) {
       this.numReactors = 1;
       this.leftThrust = 1;
       this.rightThrust = 1;
-      this.speed = 0;
+      this.speed = 1;
       for (var i = 0; i < this.tiles.length; i++) {
          switch (this.tiles[i].type) {
             case(GUN) :
@@ -66,7 +66,7 @@ var Ship = function(tiles, cx, cy) {
       var newTiles = [];
       var tileX = Math.round(x / INTERNAL_GRID);
       var tileY = Math.round(y / INTERNAL_GRID);
-      console.log("hit on " + tileX + ", " + tileY);
+      //console.log("hit on " + tileX + ", " + tileY);
       //if hit on cockpit, gg.
       if (tileX == this.cx && tileY == this.cy) {
          this.tiles = newTiles;
@@ -74,11 +74,11 @@ var Ship = function(tiles, cx, cy) {
       }
       for (var i = 0; i < this.tiles.length; i++) {
          if (this.cx == this.tiles[i].x && this.cy == this.tiles[i].y) {
-            console.log("added center to newTiles");
+            //console.log("added center to newTiles");
             newTiles.push(tiles[i]);
          }
          if (tileX == this.tiles[i].x && tileY == this.tiles[i].y) {
-            console.log("a REAL HIT!");
+            //console.log("a REAL HIT!");
             this.tiles.splice(i--, 1);
             hitSustained = true;
          }
@@ -103,19 +103,19 @@ var Ship = function(tiles, cx, cy) {
          for (var j = 0; j < this.tiles.length; j++) {
             if (!containsInNew(this.tiles[j])) {
                if (newTiles[i].directions[UP] && this.tiles[j].x == newTiles[i].x && this.tiles[j].y == newTiles[i].y - 1) {
-                  console.log("attached above");
+                  //console.log("attached above");
                   newTiles.push(this.tiles[j]);
                }
                if (newTiles[i].directions[DOWN] && this.tiles[j].x == newTiles[i].x && this.tiles[j].y == newTiles[i].y + 1) {
-                  console.log("attached below");
+                  //console.log("attached below");
                   newTiles.push(this.tiles[j]);
                }
                if (newTiles[i].directions[LEFT] && this.tiles[j].x == newTiles[i].x - 1 && this.tiles[j].y == newTiles[i].y) {
-                  console.log("attached left");
+                  //console.log("attached left");
                   newTiles.push(this.tiles[j]);
                }
                if (newTiles[i].directions[RIGHT] && this.tiles[j].x == newTiles[i].x + 1 && this.tiles[j].y == newTiles[i].y) {
-                  console.log("attached right");
+                  //console.log("attached right");
                   newTiles.push(this.tiles[j]);
                }
             }
@@ -135,10 +135,6 @@ var Ship = function(tiles, cx, cy) {
 
          ctx.drawImage(this.tiles[i].image, this.x + (this.tiles[i].x * INTERNAL_GRID), this.y + (this.tiles[i].y * INTERNAL_GRID), INTERNAL_GRID, INTERNAL_GRID);
          //commented out is debug text, showing the coordinates on the ship.
-         ctx.fillStyle = '#ff0000';
-         ctx.font = "16px Calibri"
-         ctx.fillText("Energy: " + this.energy, 50, 50);
-         ctx.stroke();
          //this.tiles[i].shipDraw(ctx, this.x, this.y);
       }
       ctx.fillStyle = '#ff0000';
@@ -149,6 +145,6 @@ var Ship = function(tiles, cx, cy) {
    
    this.update = function(delta)
    {
-      this.energy += this.numReactors * magic / 2;
+      this.energy += this.numReactors * magic / 3;
    }
 }
