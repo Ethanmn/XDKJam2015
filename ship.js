@@ -27,7 +27,7 @@ var Ship = function(tiles, cx, cy) {
       this.numReactors = 1;
       this.leftThrust = 1;
       this.rightThrust = 1;
-      this.speed = 0;
+      this.speed = 1;
       for (var i = 0; i < this.tiles.length; i++) {
          switch (this.tiles[i].type) {
             case(GUN) :
@@ -39,7 +39,7 @@ var Ship = function(tiles, cx, cy) {
                break;
             
             case(REACTOR) :
-               this.reactors++;
+               this.numReactors++;
                break;
             
             case(ENGINE_LEFT) :
