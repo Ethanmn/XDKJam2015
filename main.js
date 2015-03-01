@@ -24,7 +24,8 @@ var state = MENU; //Ethan, edit this line to see your stuff drawn (change to sta
 function loadGame()
 {
    ctx = document.getElementById("canvas").getContext('2d');
-   
+   FastClick.attach(document.body);
+
    //loadShooter();
    gameLoop();
 }
