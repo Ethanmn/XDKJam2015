@@ -91,7 +91,14 @@ mainMenuImage.src = "assets/MenuScreen2.png";
 var mainMenuImageMuted = new Image();
 mainMenuImageMuted.src = "assets/MenuScreen2Muted.png";
 
-var creditMenu = new Image
+var creditMenu = new Image();
+creditMenu.src = "assets/creditScreen.png";
+var gameOverMenu = new Image();
+gameOverMenu.src = "assets/GameOver.png";
+var tut1Menu = new Image();
+tut1Menu.src = "assets/Tutorial1.png";
+var tut2Menu = new Image();
+tut2Menu.src = "assets/Tutorial2.png";
 
 //background music section
 var Hustle = new Audio("assets/sounds/Hustle.wav");

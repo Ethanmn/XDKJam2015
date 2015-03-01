@@ -29,6 +29,9 @@ function loadShooter()
 
 function updateShooter(delta)
 {
+   if (ship.tiles.length == 0) {
+      state = GAMEOVER;
+   }
    for (var i = 0; i < bulletList.length; i++)
    {
       if (bulletList[i].posY < -BULLET_SIZE ||

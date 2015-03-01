@@ -4,9 +4,9 @@ var BUILD = 0;
 var SHOOT = 1;
 var MENU = 2;
 var CREDITS = 3;
-var HELP = 4;
 var TUTORIAL1 = 5;
 var TUTORIAL2 = 6;
+var GAMEOVER = 7;
 var ctx;
 var mouseDown = false;
 var mouseX, mouseY;
@@ -69,6 +69,17 @@ function draw()
          break;
       case CREDITS:
          creditDraw(ctx);
+         break;
+      case TUTORIAL1:
+         tutorial1Draw(ctx);
+         break;
+      case TUTORIAL2:
+         tutorial2Draw(ctx);
+         break;
+      case GAMEOVER:
+         gameOverDraw(ctx);
+         break;
+      default:
          break;
    }
    
