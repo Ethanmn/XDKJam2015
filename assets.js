@@ -15,6 +15,15 @@ engine2.src = "assets/engineLine.png";
 var engine3 = new Image();
 engine3.src = "assets/engineT.png";
 
+var enginer1 = new Image();
+enginer1.src = "assets/engineRight.png";
+var enginer2 = new Image();
+enginer2.src = "assets/engineLineRight.png";
+var enginel1 = new Image();
+enginel1.src = "assets/engineLeft.png";
+var enginel2 = new Image();
+enginel2.src = "assets/engineLineLeft.png";
+
 var react1 = new Image();
 react1.src = "assets/tileReactor1.png"
 var react2 = new Image();
@@ -96,4 +105,5 @@ OutlawLand.loop = true;
 var error = new Audio("assets/sounds/error.wav");
 var trash = new Audio("assets/sounds/fireball.wav");
 var laser = new Audio("assets/sounds/Gun_Shot-Marvin-1140816320.wav");
+var boomSound = new Audio("assets/sounds/explosion.wav");
 var clangs = [new Audio("assets/sounds/clang1.wav"), new Audio("assets/sounds/clang2.wav"), new Audio("assets/sounds/clang3.wav")];
