@@ -145,6 +145,6 @@ var Ship = function(tiles, cx, cy) {
    
    this.update = function(delta)
    {
-      this.energy += this.numReactors * magic / 4;
+      this.energy += this.numReactors * magic / 3;
    }
 }
