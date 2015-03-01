@@ -1,6 +1,9 @@
-addEventListener("mousedown", builderMouseDownEvent);
+/*addEventListener("mousedown", builderMouseDownEvent);
 addEventListener("mousemove", builderMouseHoldEvent);
-addEventListener("mouseup", builderMouseUpEvent);
+addEventListener("mouseup", builderMouseUpEvent);*/
+addEventListener("touchstart", builderMouseDownEvent);
+addEventListener("touchmove", builderMouseDownEvent);
+addEventListener("touchend", builderMouseDownEvent);
 
 
 //var TESTON = true;
@@ -123,11 +126,15 @@ function builderDraw() {
 }
 
 function builderMouseDownEvent(e){
+   
    if (state == BUILD) {
       //console.log(e);
+      /*for mouse
       mouseX = e.offsetX;
       mouseY = e.offsetY;
-      
+      */
+      mouseX = e.screenX + 8;
+      mouseY = e.screenY + 8;
       //checkDamage(); //button check: REMOVE ME WHEN SHOOTER IS UP TO DATE
       
       checkNewShip(); //button 2
@@ -159,8 +166,12 @@ function checkDamage() {
 function builderMouseHoldEvent(e){
    if (state == BUILD) {
       if (mouseDown) {
+         /*
          mouseX = e.offsetX;
          mouseY = e.offsetY;
+         */
+         mouseX = e.screenX + 8;
+         mouseY = e.screenY + 8;
          //console.log("mouse moved");
       }
    }
