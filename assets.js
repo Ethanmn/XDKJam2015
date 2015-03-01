@@ -15,6 +15,15 @@ engine2.src = "assets/engineLine.png";
 var engine3 = new Image();
 engine3.src = "assets/engineT.png";
 
+var enginer1 = new Image();
+enginer1.src = "assets/engineRight.png";
+var enginer2 = new Image();
+enginer2.src = "assets/engineLineRight.png";
+var enginel1 = new Image();
+enginel1.src = "assets/engineLeft.png";
+var enginel2 = new Image();
+enginel2.src = "assets/engineLineLeft.png";
+
 var react1 = new Image();
 react1.src = "assets/tileReactor1.png"
 var react2 = new Image();
