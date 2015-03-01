@@ -193,6 +193,7 @@ function bulletCollision()
          {
             bulletList.splice(k, 1);
             asteroidList[l].health--;
+            playSFX(BOOM);
             break;
          }
       }
@@ -223,6 +224,7 @@ function shipCollision()
              isHitL || isHitR)
          {
             asteroidList[a].health = 0;
+            playSFX(BOOM);
          }
       }
    }

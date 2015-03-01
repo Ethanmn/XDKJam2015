@@ -28,18 +28,24 @@ function switchBackground (bg) {
 }
 
 function playSFX(sfx) {
-	if (curSfx > 0) {
-		sfxArray[curSfx].pause();
-		sfxArray[curSfx].currentTime = 0;
-	} else {
-		clangs[clangNum].pause();
-		clangs[clangNum].currentTime = 0;
+	if (curSfx != BOOM) {
+		if (curSfx > 0) {
+			sfxArray[curSfx].pause();
+			sfxArray[curSfx].currentTime = 0;
+		} else {
+			clangs[clangNum].pause();
+			clangs[clangNum].currentTime = 0;
+		}
 	}
 
 	if (sfx == 0) {
 		clangNum = Math.floor(Math.random() * clangs.length);
 		clangs[clangNum].play();
 		curSfx = 0;
+	} else if (sfx%sfxArray.length == BOOM) {
+		sfxArray[BOOM].currentTime = 0;
+		sfxArray[BOOM].play();
+		curSfx = sfx%sfxArray.length;
 	} else {
 		sfxArray[sfx%sfxArray.length].play();
 		curSfx = sfx%sfxArray.length;
