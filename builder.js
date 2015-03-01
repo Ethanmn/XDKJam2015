@@ -65,13 +65,13 @@ function builderUpdate(delta) {
    }
    buildTimer -= delta;
    if (buildTimer < 0 && timerOn) {
-      console.log("timer expired");
+      //console.log("timer expired");
       ship = exportShip();
       timerOn = false;
       state = STORE;
    }
    if (burn > 0) {
-      console.log(burn);
+      //console.log(burn);
       burn--;
    }
 }
@@ -133,7 +133,7 @@ function builderMouseDownEvent(e){
       
       for (var i = 0; i < tiles.length; i++) {
          if(tiles[i].checkCollide(mouseX, mouseY) && tiles[i].moveable) {
-            console.log("selected");
+            //console.log("selected");
             tiles[i].selected = true;
             tiles[i].xPrev = tiles[i].x;
             tiles[i].yPrev = tiles[i].y;
@@ -171,7 +171,7 @@ function builderMouseUpEvent(e) {
    if (state == BUILD) {
       for (var i = 0; i < tiles.length; i++) {
          if (tiles[i].selected) {
-            console.log("deselecting");
+            //console.log("deselecting");
             
             tiles[i].snap();
             if(tiles[i].x >= trashX && tiles[i].y >= trashY) {

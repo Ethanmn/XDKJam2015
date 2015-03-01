@@ -8,10 +8,12 @@ var shipMid;
 var bulletList = [];
 var asteroidList = [];
 var difficulty;
+var gunCD;
 
 function loadShooter()
 {
    difficulty = 0;
+   gunCD = 0;
    
    STARTX = (BG_WIDTH / 2) + (SHIP_WIDTH * INTERNAL_GRID / 2);
    STARTY = BG_HEIGHT - (SHIP_HEIGHT * INTERNAL_GRID);
@@ -19,9 +21,8 @@ function loadShooter()
    //ship = new Ship([new Tile(testTileImage, GRID * 5, GRID * 6, [true, true, true, true], COCKPIT),new Tile(testTileImage, GRID * 3, GRID * 2, [true, true, true, true], COCKPIT)], 2, 4);
    ship.x = STARTX;
    ship.y = STARTY;
-   ship.leftThrust = 10;
-   ship.rightThrust = 10;
-   ship.numReactors = 1;
+   ship.leftThrust = 2;
+   ship.rightThrust = 1;
   
    shipMid = (SHIP_WIDTH * INTERNAL_GRID) / 2;
    shipTarX = STARTX;
@@ -63,6 +64,7 @@ function updateShooter(delta)
    shipCollision();
    
    difficulty += (ship.speed * magic) / 1000;
+   gunCD -= 6 * magic;
 }
 
 function drawShooter()
@@ -144,19 +146,23 @@ function setTarget()
 
 function shoot()
 {
-   for (var k = 0; k < ship.listWeaps.length; k++)
+   if (gunCD < 0)
    {
-      if (ship.energy >= 5)
+      for (var k = 0; k < ship.listWeaps.length; k++)
       {
-         playSFX(LASER);
-         var ang = Math.atan2(mouseY + (BULLET_SIZE / 2) - INTERNAL_GRID/2 - ship.listWeaps[k].y * INTERNAL_GRID - ship.y, mouseX + (BULLET_SIZE / 2) - INTERNAL_GRID/2 - ship.x - ship.listWeaps[k].x * INTERNAL_GRID);
-         var vx = Math.cos(ang) * BULLET_VEL;
-         var vy = Math.sin(ang) * BULLET_VEL;
-         ship.energy -= 5;
+         if (ship.energy >= 5)
+         {
+            playSFX(LASER);
+            var ang = Math.atan2(mouseY + (BULLET_SIZE / 2) - INTERNAL_GRID/2 - ship.listWeaps[k].y * INTERNAL_GRID - ship.y, mouseX + (BULLET_SIZE / 2) - INTERNAL_GRID/2 - ship.x - ship.listWeaps[k].x * INTERNAL_GRID);
+            var vx = Math.cos(ang) * BULLET_VEL;
+            var vy = Math.sin(ang) * BULLET_VEL;
+            ship.energy -= 5;
+            
+            bulletList.push(new Bullet(ship.x + ship.listWeaps[k].x * INTERNAL_GRID, ship.y + ship.listWeaps[k].y * INTERNAL_GRID, vx, vy));
+            gunCD = 100;
+         }
          
-         bulletList.push(new Bullet(ship.x + ship.listWeaps[k].x * INTERNAL_GRID, ship.y + ship.listWeaps[k].y * INTERNAL_GRID, vx, vy));
       }
-      
    }
 }
 

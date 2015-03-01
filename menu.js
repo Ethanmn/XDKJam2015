@@ -10,7 +10,7 @@ function menuMouseDownEvent(e) {
    if (state == MENU) {
       mouseX = e.offsetX;
       mouseY = e.offsetY;
-      console.log("click get: ("+ mouseX +", " + mouseY + ")");
+      //console.log("click get: ("+ mouseX +", " + mouseY + ")");
       if (mouseX > 112 && mouseX < 240 && mouseY > 64 && mouseY < 112) {
          state = BUILD;
          startBuilder();
