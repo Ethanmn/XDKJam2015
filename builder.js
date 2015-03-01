@@ -65,14 +65,14 @@ function builderUpdate(delta) {
    }
    buildTimer -= delta;
    if (buildTimer < 0 && timerOn) {
-      console.log("timer expired");
+      //console.log("timer expired");
       ship = exportShip();
       timerOn = false;
       state = SHOOT;
       loadShooter();
    }
    if (burn > 0) {
-      console.log(burn);
+      //console.log(burn);
       burn--;
    }
 }
@@ -134,7 +134,7 @@ function builderMouseDownEvent(e){
       
       for (var i = 0; i < tiles.length; i++) {
          if(tiles[i].checkCollide(mouseX, mouseY) && tiles[i].moveable) {
-            console.log("selected");
+            //console.log("selected");
             tiles[i].selected = true;
             tiles[i].xPrev = tiles[i].x;
             tiles[i].yPrev = tiles[i].y;
@@ -172,7 +172,7 @@ function builderMouseUpEvent(e) {
    if (state == BUILD) {
       for (var i = 0; i < tiles.length; i++) {
          if (tiles[i].selected) {
-            console.log("deselecting");
+            //console.log("deselecting");
             
             tiles[i].snap();
             if(tiles[i].x >= trashX && tiles[i].y >= trashY) {
@@ -273,16 +273,16 @@ function generateTile() {
             tiles.push(new Tile(engine3, GRID * 8, GRID * 1, [true, true, false, true], ENGINE_DOWN));
             break;
          case 21:
-            tiles.push(new Tile(enginer1, GRID * 8, GRID * 1, [false, false, false, true], ENGINE_LEFT));
+            tiles.push(new Tile(enginer1, GRID * 8, GRID * 1, [false, false, false, true], ENGINE_RIGHT));
             break;
          case 22:
-            tiles.push(new Tile(enginer2, GRID * 8, GRID * 1, [true, false, true, false], ENGINE_LEFT));
+            tiles.push(new Tile(enginer2, GRID * 8, GRID * 1, [true, false, true, false], ENGINE_RIGHT));
             break;
          case 23:
-            tiles.push(new Tile(enginel1, GRID * 8, GRID * 1, [false, true, false, false], ENGINE_RIGHT));
+            tiles.push(new Tile(enginel1, GRID * 8, GRID * 1, [false, true, false, false], ENGINE_LEFT));
             break;
          case 24:
-            tiles.push(new Tile(enginel2, GRID * 8, GRID * 1, [true, false, true, false], ENGINE_RIGHT));
+            tiles.push(new Tile(enginel2, GRID * 8, GRID * 1, [true, false, true, false], ENGINE_LEFT));
             break;
          default:
             break;
