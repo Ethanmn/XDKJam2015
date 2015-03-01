@@ -68,7 +68,8 @@ function builderUpdate(delta) {
       console.log("timer expired");
       ship = exportShip();
       timerOn = false;
-      state = STORE;
+      state = SHOOT;
+      loadShooter();
    }
    if (burn > 0) {
       console.log(burn);
