@@ -122,11 +122,11 @@ function shooterCheck(e)
    
    if (state == SHOOT) {
       // Use for Mouse
-      //mouseX = offsetX;
-      //mouseY = offsetY;
+      //mouseX = e.offsetX;
+      //mouseY = e.offsetY;
       
-      mouseX = e.screenX - 8;
-      mouseY = e.screenY - 8;
+      mouseX = e.touches[0].screenX - 8;
+      mouseY = e.touches[0].screenY - 8;
 
       if (mouseY > (BG_HEIGHT - (SHIP_HEIGHT * INTERNAL_GRID)))
       {
@@ -156,7 +156,7 @@ function shoot()
 {
    if (gunCD < 0)
    {
-      if (ship.energy >= 10)
+      if (ship.energy >= 10 && ship.listWeaps.length)
       {
          for (var k = 0; k < ship.listWeaps.length; k++)
          {
