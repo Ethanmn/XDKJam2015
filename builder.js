@@ -152,7 +152,7 @@ function builderMouseDownEvent(e){
       mouseDown = true;
    }
 }
-/*
+/* debug the .damage function
 function checkDamage() {
    if (newTileButtonX <= mouseX && newTileButtonX + newTileButtonW >= mouseX &&
       newTileButtonY <= mouseY && newTileButtonY + newTileButtonH >= mouseY) {
