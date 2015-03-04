@@ -1,6 +1,5 @@
 addEventListener("mousedown", shooterCheck, false);
-//
-addEventListener("touchstart", shooterCheck, false);
+//addEventListener("touchstart", shooterCheck, false);
 
 var STARTX;
 var STARTY;
@@ -128,8 +127,9 @@ function shooterCheck(e)
       mouseX = e.offsetX;
       mouseY = e.offsetY;
       
-      //mouseX = e.screenX - 8;
-      //mouseY = e.screenY - 8;
+      
+      //mouseX = e.touches[0].screenX - 8;
+      //mouseY = e.touches[0].screenY - 8;
 
       if (mouseY > (BG_HEIGHT - (SHIP_HEIGHT * INTERNAL_GRID)))
       {
@@ -159,7 +159,7 @@ function shoot()
 {
    if (gunCD < 0)
    {
-      if (ship.energy >= 10)
+      if (ship.energy >= 10 && ship.listWeaps.length)
       {
          for (var k = 0; k < ship.listWeaps.length; k++)
          {

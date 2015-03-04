@@ -22,8 +22,8 @@ var Tile = function(image, x, y, directions, type) {
       this.yoff = 0;
       this.moveable = true;
       this.type = type;
-      this.xPrev = 0;
-      this.yPrev = 0;
+      this.xPrev = x;
+      this.yPrev = y;
    }
    this.init(image, x, y, directions, type);
    

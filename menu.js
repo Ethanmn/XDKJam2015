@@ -1,5 +1,6 @@
+
 addEventListener("mousedown", menuMouseDownEvent);
-//addEventListener("touchstart", menuMouseDownEvent);
+//document.getElementById("canvas").addEventListener("touchstart", menuMouseDownEvent);
 var menuDraw = function(ctx) {
    if (muted == 0)
       ctx.drawImage(mainMenuImage, 0, 0);
@@ -27,13 +28,14 @@ var gameOverDraw = function(ctx) {
 function menuMouseDownEvent(e) {
    mouseX = e.offsetX;
    mouseY = e.offsetY;
+   //mouseX = e.touches[0].screenX + 8;
+   //mouseY = e.touches[0].screenY + 8;
    if (state == MENU) {
       // use for mouse
       mouseX = e.offsetX;
       mouseY = e.offsetY;
       //use for touch
-      //mouseX = e.screenX + 8;
-      //mouseY = e.screenY + 8;
+
       //console.log("click get: ("+ mouseX +", " + mouseY + ")");
       if (mouseX > 112 && mouseX < 240 && mouseY > 150 && mouseY < 230) {
          state = BUILD;
@@ -55,7 +57,7 @@ function menuMouseDownEvent(e) {
       }
    }
    else if (state == TUTORIAL1) {
-      console.log(e);
+      //console.log(e);
       if (mouseX > 30 && mouseX < 150 && mouseY > 420) {
          state = MENU;
       }

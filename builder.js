@@ -1,11 +1,9 @@
 addEventListener("mousedown", builderMouseDownEvent);
-addEventListener("mousemove", builderMouseHoldEvent);
-addEventListener("mouseup", builderMouseUpEvent);
-/*
-addEventListener("touchstart", builderMouseDownEvent);
-addEventListener("touchmove", builderMouseDownEvent);
-addEventListener("touchend", builderMouseDownEvent);
-*/
+//addEventListener("mousemove", builderMouseHoldEvent);
+//addEventListener("mouseup", builderMouseUpEvent);
+
+//addEventListener("touchmove", builderMouseHoldEvent);
+//addEventListener("touchend", builderMouseUpEvent);
 
 //var TESTON = true;
 
@@ -118,7 +116,7 @@ function builderDraw() {
    for (var i = 0; i < tiles.length; i++) {
       tiles[i].draw(ctx);
    }
-   /*} //remove
+   /*} //test drawing the ship
    else {
       //console.log("shipdraw");
       ctx.drawImage(newTileButtonImage, newTileButtonX, newTileButtonY);
@@ -129,17 +127,15 @@ function builderDraw() {
 function builderMouseDownEvent(e){
    
    if (state == BUILD) {
-      //console.log(e);
       //for mouse
-      mouseX = e.offsetX;
-      mouseY = e.offsetY;
+      mouseX = e.offsetX - 16;
+      mouseY = e.offsetY - 16;
+      console.log(e);
+      //mouseX = e.touches[0].screenX + 8;
+      //mouseY = e.touches[0].screenY + 8;
       
-      //mouseX = e.screenX + 8;
-      //mouseY = e.screenY + 8;
-      //checkDamage(); //button check: REMOVE ME WHEN SHOOTER IS UP TO DATE
-      
-      checkNewShip(); //button 2
-      
+      checkNewShip(); //check to see if the ship button got pressed
+      /*
       for (var i = 0; i < tiles.length; i++) {
          if(tiles[i].checkCollide(mouseX, mouseY) && tiles[i].moveable) {
             //console.log("selected");
@@ -148,8 +144,36 @@ function builderMouseDownEvent(e){
             tiles[i].yPrev = tiles[i].y;
             break;
          }
+      }*/
+      var tilePlaced = false;
+      for (var i = 0; i < tiles.length; i++) {
+         if (tiles[i].selected) {
+            //console.log("deselecting");
+            tiles[i].x = mouseX;
+            tiles[i].y = mouseY;
+            tiles[i].snap();
+            if(tiles[i].x >= trashX && tiles[i].y >= trashY) {
+               tiles.splice(i--, 1);
+               playSFX(TRASH);
+               burn += 50;
+               generateTile();
+               break;
+            }
+            else if(tiles[i].checkPlacementLegality()) {
+               tiles[i].moveable = false;
+               tiles[i].selected = false;
+               generateTile();
+               playSFX(METAL);
+               break;
+            }
+            else {
+               tiles[i].x = tiles[i].xPrev;
+               tiles[i].y = tiles[i].yPrev;
+               playSFX(ERROR);
+            }
+         }
       }
-      mouseDown = true;
+      //mouseDown = true;
    }
 }
 /* debug the .damage function
@@ -164,54 +188,31 @@ function checkDamage() {
    }
 }*/
 
+/* removing click/drag for touches
 function builderMouseHoldEvent(e){
    if (state == BUILD) {
       if (mouseDown) {
-         
          mouseX = e.offsetX;
          mouseY = e.offsetY;
          
          //mouseX = e.screenX + 8;
          //mouseY = e.screenY + 8;
-         //console.log("mouse moved");
-      }
-   }
-}
-
-function builderMouseUpEvent(e) {
-   var isTrash = 0; // used to make sure that the METAL sfx doesn't play when you put something in the trash
-
-   if (state == BUILD) {
-      for (var i = 0; i < tiles.length; i++) {
-         if (tiles[i].selected) {
-            //console.log("deselecting");
-            
-            tiles[i].snap();
-            if(tiles[i].x >= trashX && tiles[i].y >= trashY) {
-               tiles.splice(i--, 1);
-               playSFX(TRASH);
-               burn += 200;
-               isTrash++;
-               
-            }
-            if(tiles[i].checkPlacementLegality()) {
-               tiles[i].moveable = false;
-               generateTile();
-               
-               if(isTrash == 0)
-                  playSFX(METAL);
-            }
-            else {
-               tiles[i].x = tiles[i].xPrev;
-               tiles[i].y = tiles[i].yPrev;
-               playSFX(ERROR);
-            }
+         
+         for(var i = 0; i < e.touches.length; i++)
+         {
+            mouseX = e.touches[i].screenX + 8;
+            mouseY = e.touches[i].screenY + 8;
          }
-         tiles[i].selected = false;
+         //console.log("mouse moved");
+         
       }
-      mouseDown = false;
    }
-}
+}*/
+/*
+function builderMouseUpEvent(e) {
+   //moved to builderMouseDown
+
+}*/
 
 
 
@@ -300,6 +301,7 @@ function generateTile() {
             break;
             
       }
+      tiles[tiles.length - 1].selected = true;
 }
 
 function checkNewShip() {
